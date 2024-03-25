@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Potato
+  - Tomato
+  - Onion
+  - lemon
+  - wiper
+  - Knief
+  - Burner
+  - ' Baking Try'
+  - JuicerJug
+  - LeftDoor
+  - RightDoor
+  - Timeknob
+  - FryPan
+  - BakingTray
+  - BigPot
+  - cuttertry
+  - frietry
+  - Right
+  - Left
+  - Drawer
+  - BUtton
+  - Stoll
+  - Oven
+  - Meat
+  - Dust
+  - Deep Plate, Basic
+  - Small Deep PLate, Basic
+  - Large Bowl , Basic
+  - Casserole , Basic
+  - Large Plate Basic
+  - Medium Plate Basic
+  - Small Plate,  Basic
+  - Medium Plate,  Basic
+  - Small Bowl , Basic
+  - Square plate, Basic
+  - PLaceInOven
+  - MilkCream
+  - Box
+  - Blender
+  - Fish
+  - onion
+  - potato
+  - Lemon
+  - tomato
+  - meat
+  - fish
+  - SalmonFillet
+  - CuttingBoard
+  - PellaPan
+  - Masala
+  - Place
+  - salt
+  - horsera
+  - cayennepepper
+  - blackpepper
+  - drilldried
+  - thymedried
+  - Spoon
+  - Spoon1
+  - Spatulla
+  - OvenPlace
+  - Oilfill
+  - Sushi
+  - Order
+  - TakeOrder
+  - DeepFryer
+  - burner
+  - ChickenBroute
+  - Cut
+  - Utensils
+  - potato1
+  - OVEN
+  - Dril Dried
+  - Salt.
+  - BlackPepper
+  - Cayenne Pepper
+  - Horseria
+  - Thyme Dried
+  - Cayenna Pepper
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - RayCastHit
+  - fpsCollidsion
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

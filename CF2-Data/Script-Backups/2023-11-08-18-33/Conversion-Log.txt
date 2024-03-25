@@ -1,0 +1,122 @@
+Converting script [1 / 12]	[\FPS\Joystick Pack\Scripts\Joysticks\FixedTouchField.cs]
+	Fragments : 6
+		[ 0] : Line:   26	InputProperty touches             
+		[ 1] : Line:   28	InputProperty touches             
+		[ 2] : Line:   29	InputProperty touches             
+		[ 3] : Line:   33	InputProperty mousePosition       
+		[ 4] : Line:   33	InputProperty mousePosition       
+		[ 5] : Line:   34	InputProperty mousePosition       
+
+Converting script [2 / 12]	[\FPS\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController_EXAMPLE.cs]
+	Fragments : 4
+		[ 0] : Line:   60	InputMethod   GetButton           	("Jump")
+		[ 1] : Line:  196	InputMethod   GetAxis             	("Horizontal")
+		[ 2] : Line:  197	InputMethod   GetAxis             	("Vertical")
+		[ 3] : Line:  204	InputMethod   GetKey              	(KeyCode.LeftShift)
+
+Converting script [3 / 12]	[\FPS\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs]
+	Fragments : 10
+		[ 0] : Line:   42	InputMethod   GetAxis             	("Mouse X")
+		[ 1] : Line:   43	InputMethod   GetAxis             	("Mouse Y")
+		[ 2] : Line:   85	Other mod.	[Cursor.lockState]
+		[ 3] : Line:   86	Other mod.	[Cursor.visible]
+		[ 4] : Line:   99	InputMethod   GetKeyUp            	(KeyCode.Escape)
+		[ 5] : Line:  103	InputMethod   GetMouseButtonUp    	(0)
+		[ 6] : Line:  110	Other mod.	[Cursor.lockState]
+		[ 7] : Line:  111	Other mod.	[Cursor.visible]
+		[ 8] : Line:  115	Other mod.	[Cursor.lockState]
+		[ 9] : Line:  116	Other mod.	[Cursor.visible]
+
+Converting script [4 / 12]	[\FPS\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook_EXAMPLE.cs]
+	Fragments : 2
+		[ 0] : Line:   29	InputMethod   GetAxis             	("Mouse X")
+		[ 1] : Line:   30	InputMethod   GetAxis             	("Mouse Y")
+
+Converting script [5 / 12]	[\FPS\Standard Assets\ParticleSystems\Scripts\Hose.cs]
+	Fragments : 2
+		[ 0] : Line:   21	InputMethod   GetMouseButton      	(0)
+		[ 1] : Line:   23	InputMethod   GetKeyDown          	(KeyCode.Alpha1)
+
+Converting script [6 / 12]	[\Scripts\SimpleCameraController.cs]
+	Fragments : 17
+		[ 0] : Line:  139	InputMethod   GetKey              	(KeyCode.W)
+		[ 1] : Line:  143	InputMethod   GetKey              	(KeyCode.S)
+		[ 2] : Line:  147	InputMethod   GetKey              	(KeyCode.A)
+		[ 3] : Line:  151	InputMethod   GetKey              	(KeyCode.D)
+		[ 4] : Line:  155	InputMethod   GetKey              	(KeyCode.Q)
+		[ 5] : Line:  159	InputMethod   GetKey              	(KeyCode.E)
+		[ 6] : Line:  182	Other mod.	[Cursor.lockState]
+		[ 7] : Line:  188	Other mod.	[Cursor.visible]
+		[ 8] : Line:  189	Other mod.	[Cursor.lockState]
+		[ 9] : Line:  234	InputProperty mouseScrollDelta    
+		[10] : Line:  247	InputMethod   GetAxis             	("Mouse X")
+		[11] : Line:  247	InputMethod   GetAxis             	("Mouse Y")
+		[12] : Line:  258	InputMethod   GetKey              	(KeyCode.LeftShift)
+		[13] : Line:  268	InputMethod   GetKey              	(KeyCode.Escape)
+		[14] : Line:  279	InputMethod   GetMouseButton      	(1)
+		[15] : Line:  288	InputMethod   GetMouseButtonDown  	(1)
+		[16] : Line:  297	InputMethod   GetMouseButtonUp    	(1)
+
+Converting script [7 / 12]	[\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs]
+	Fragments : 4
+		[ 0] : Line:   81	InputMethod   GetButtonDown       	("Jump")
+		[ 1] : Line:  227	InputMethod   GetAxis             	("Horizontal")
+		[ 2] : Line:  228	InputMethod   GetAxis             	("Vertical")
+		[ 3] : Line:  241	InputMethod   GetKey              	(KeyCode.LeftShift)
+
+Converting script [8 / 12]	[\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs]
+	Fragments : 10
+		[ 0] : Line:   36	InputMethod   GetAxis             	("Mouse X")
+		[ 1] : Line:   37	InputMethod   GetAxis             	("Mouse Y")
+		[ 2] : Line:   74	Other mod.	[Cursor.lockState]
+		[ 3] : Line:   75	Other mod.	[Cursor.visible]
+		[ 4] : Line:   88	InputMethod   GetKeyUp            	(KeyCode.Escape)
+		[ 5] : Line:   92	InputMethod   GetMouseButtonUp    	(0)
+		[ 6] : Line:   99	Other mod.	[Cursor.lockState]
+		[ 7] : Line:  100	Other mod.	[Cursor.visible]
+		[ 8] : Line:  104	Other mod.	[Cursor.lockState]
+		[ 9] : Line:  105	Other mod.	[Cursor.visible]
+
+Converting script [9 / 12]	[\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs]
+	Fragments : 4
+		[ 0] : Line:   47	InputMethod   GetKey              	(RunKey)
+		[ 1] : Line:  133	InputMethod   GetButtonDown       	("Jump")
+		[ 2] : Line:  217	InputMethod   GetAxis             	("Horizontal")
+		[ 3] : Line:  218	InputMethod   GetAxis             	("Vertical")
+
+Converting script [10 / 12]	[\Standard Assets\Utility\DragRigidbody.cs]
+	Fragments : 5
+		[ 0] : Line:   22	InputMethod   GetMouseButtonDown  	(0)
+		[ 1] : Line:   32	InputProperty mousePosition       
+		[ 2] : Line:   33	InputProperty mousePosition       
+		[ 3] : Line:   71	InputMethod   GetMouseButton      	(0)
+		[ 4] : Line:   73	InputProperty mousePosition       
+
+Converting script [11 / 12]	[\Standard Assets\Utility\ForcedReset.cs]
+	Fragments : 1
+		[ 0] : Line:   12	InputMethod   GetButtonDown       	("ResetObject")
+
+Converting script [12 / 12]	[\Standard Assets\Utility\SimpleMouseRotator.cs]
+	Fragments : 4
+		[ 0] : Line:   47	InputMethod   GetAxis             	("Mouse X")
+		[ 1] : Line:   48	InputMethod   GetAxis             	("Mouse Y")
+		[ 2] : Line:   97	InputProperty mousePosition       
+		[ 3] : Line:   98	InputProperty mousePosition       
+
+
+12 scripts modified!
+Overwriting actual scripts...
+	[0 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\FPS\Joystick Pack\Scripts\Joysticks\FixedTouchField.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\FPS\Joystick Pack\Scripts\Joysticks\FixedTouchField.cs]
+	[1 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\FPS\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController_EXAMPLE.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\FPS\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController_EXAMPLE.cs]
+	[2 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\FPS\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\FPS\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs]
+	[3 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\FPS\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook_EXAMPLE.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\FPS\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook_EXAMPLE.cs]
+	[4 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\FPS\Standard Assets\ParticleSystems\Scripts\Hose.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\FPS\Standard Assets\ParticleSystems\Scripts\Hose.cs]
+	[5 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\Scripts\SimpleCameraController.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\Scripts\SimpleCameraController.cs]
+	[6 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs]
+	[7 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs]
+	[8 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs]
+	[9 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\Standard Assets\Utility\DragRigidbody.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\Standard Assets\Utility\DragRigidbody.cs]
+	[10 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\Standard Assets\Utility\ForcedReset.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\Standard Assets\Utility\ForcedReset.cs]
+	[11 / 12] from  [C:/Users/USAMA ASHRAF/Cooking Simulator/CF2-Data/Script-Backups/2023-11-08-18-33\Assets-After/\Standard Assets\Utility\SimpleMouseRotator.cs] to [C:/Users/USAMA ASHRAF/Cooking Simulator/Assets/\Standard Assets\Utility\SimpleMouseRotator.cs]
+
+Overwriting COMPLETED!
