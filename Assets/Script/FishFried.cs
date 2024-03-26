@@ -97,7 +97,7 @@ public class FishFried : MonoBehaviour
         Renderer childRenderer = child.GetComponent<Renderer>();
         Material originalMaterial = childRenderer.material;
         float elapsedTime = 0f;
-        float duration = 1.3f;
+        float duration = 1f;
 
         while (elapsedTime < duration)
         {

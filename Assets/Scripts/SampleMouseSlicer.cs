@@ -25,6 +25,13 @@ namespace BzKovSoft.ObjectSlicer.Samples
             RotateButton1.SetActive(true);
             initialPosition = PickNDrop.yposition;
         }
+        private void OnEnable()
+        {
+            ResetCutbtn.SetActive(true);
+            RotateButton.SetActive(true);
+            RotateButton1.SetActive(true);
+            initialPosition = PickNDrop.yposition;
+        }
         private void Update()
         {
             //First RayCast

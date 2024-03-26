@@ -96,8 +96,6 @@ namespace LiquidVolumeFX
             BrouteEffect.gameObject.SetActive(true);
             rotation = transform.rotation;
             childRotating = true;
-           /* Bigpot.transform.GetChild(0).transform.gameObject.SetActive(true);
-            Bigpot.transform.GetChild(1).transform.gameObject.SetActive(false);*/
 
         }
         public void ONBroutebtnUp()

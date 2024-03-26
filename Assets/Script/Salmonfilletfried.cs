@@ -149,7 +149,6 @@ public class Salmonfilletfried : MonoBehaviour
             TriggerExittCount += Time.deltaTime;
             if(TriggerExittCount>220)
             {
-                print("Trigger true");
                 isTrigger = true;
                 elapsedtime1 = 0;
             }
@@ -176,7 +175,7 @@ public class Salmonfilletfried : MonoBehaviour
         Renderer childRenderer = child.GetComponent<Renderer>();
         Material originalMaterial = childRenderer.material;
         float elapsedTime = 0f;
-        float duration = 1.3f;
+        float duration = 1f;
 
         while (elapsedTime < duration)
         {
@@ -187,7 +186,6 @@ public class Salmonfilletfried : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         childRenderer.material = friedSalmonMaterial;
-        print("fry the fdew Salmon");
         child.GetComponent<Renderer>().material = friedSalmonMaterial;
         isFrying = false;
         isTrigger = true;

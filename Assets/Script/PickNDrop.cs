@@ -19,7 +19,6 @@ public class PickNDrop : MonoBehaviour
     public Transform pickedObj, pickedObj2;
     private Transform order;
     Vector3 raycast_position;
-   // public static GameObject knief2;
     public GameObject start;
     public GameObject pickbtn, dropbtn, Cuttingbtn, opendoor, closedoor, PLacebtn, dustbibtn, laptopbtn,
                       StoveBtnleft, StoveBtnleft1, StoveBtnRight, StoveBtnRight2, TimeSetBtn, porespicebtn, Spicebtn, BackFromSpice, InteractButton, backInteractButton, Leftrotation,
@@ -653,17 +652,6 @@ public class PickNDrop : MonoBehaviour
                         verticallayout.gameObject.SetActive(true);
                     }
                 }
-                else if (_hitInfo.transform.tag == "Box")
-                {
-                    outline = _hitInfo.transform.gameObject;
-                    if (!OUTline.Contains(outline))
-                    {
-                        OUTline.Add(outline);
-                    }
-                    HighlightObject();
-                    outline.GetComponent<Outline>().enabled = true;
-                    pickbtn.SetActive(true);
-                }
                 else if (_hitInfo.transform.tag == "JuicerJug" || _hitInfo.transform.tag == "BigPot")
                 {
                     outline = _hitInfo.transform.gameObject;
@@ -744,7 +732,7 @@ public class PickNDrop : MonoBehaviour
                         }
                     }
                     ItemNameImage.SetActive(true);
-                    ItemName.text = "Salmon Fillet";
+                    ItemName.text = "Salmon";
                     ItemWeight.text = "210g";
                     pickbtn.SetActive(true);
                 }
@@ -827,7 +815,7 @@ public class PickNDrop : MonoBehaviour
                         }
                     }
                     ItemNameImage.SetActive(true);
-                    ItemName.text = _hitInfo.transform.name;
+                    ItemName.text = "Tomato";
                     ItemWeight.text = "50g";
                     print("tomato");
                     pickbtn.SetActive(true);
@@ -850,7 +838,7 @@ public class PickNDrop : MonoBehaviour
                         }
                     }
                     ItemNameImage.SetActive(true);
-                    ItemName.text = _hitInfo.transform.name;
+                    ItemName.text = "Steak";
                     ItemWeight.text = "150g";
                     pickbtn.SetActive(true);
                 }
@@ -982,7 +970,7 @@ public class PickNDrop : MonoBehaviour
                     justNametext.text = _hitInfo.transform.name;
                     pickbtn.SetActive(true);
                 }
-                else if (_hitInfo.transform.tag == "wiper" || _hitInfo.transform.tag == "Stoll")
+                else if ( _hitInfo.transform.tag == "Stoll")
                 {
                     outline = _hitInfo.transform.gameObject;
                     if (!OUTline.Contains(outline))
@@ -1050,7 +1038,7 @@ public class PickNDrop : MonoBehaviour
                         outline.GetComponent<Outline>().enabled = false;
                         outline = null;
                     }
-                    
+
                     InteractButton.SetActive(false);
                     PLaceBtnn.SetActive(true);
                     potatoCutBtn.SetActive(false);
@@ -1087,9 +1075,8 @@ public class PickNDrop : MonoBehaviour
                 {
                     PLacebtn.SetActive(true);
                 }
-                else if (pickedObj.transform.tag == "BakingTray" &&_hitInfo.collider.tag == "OvenPlace" )
+                else if (pickedObj.transform.tag == "BakingTray" && _hitInfo.collider.tag == "OvenPlace")
                 {
-                    print("rfef");
                     outline = _hitInfo.collider.gameObject;
                     if (!OUTline.Contains(outline))
                     {
@@ -1099,7 +1086,7 @@ public class PickNDrop : MonoBehaviour
                     outline.GetComponent<Outline>().enabled = true;
                     PLacebtn.SetActive(true);
                 }
-                else if (pickedObj.name == "Phone" && _hitInfo.transform.name== "Phone Holder")
+                else if (pickedObj.name == "Phone" && _hitInfo.transform.name == "Phone Holder")
                 {
                     outline = _hitInfo.transform.gameObject;
                     if (!OUTline.Contains(outline))
@@ -1134,71 +1121,183 @@ public class PickNDrop : MonoBehaviour
                 pickedObj.tag == "Medium Plate,  Basic" || pickedObj.tag == "Square plate, Basic" ||
                 pickedObj.tag == "Small Deep PLate, Basic" || pickedObj.tag == "Deep Plate, Basic")
                 &&
-                    (_hitInfo.transform.tag == "cayennepepper" || _hitInfo.transform.tag == "horsera" ||
-                     _hitInfo.transform.tag == "salt" || _hitInfo.transform.tag == "thymedried" ||
-                     _hitInfo.transform.tag == "blackpepper" || _hitInfo.transform.tag == "drilldried"))
+                    (_hitInfo.transform.tag == "cayennepepper" || _hitInfo.transform.tag == "horsera" || _hitInfo.transform.tag == "Onion" || _hitInfo.transform.tag == "onion" ||
+                     _hitInfo.transform.tag == "salt" || _hitInfo.transform.tag == "thymedried" || _hitInfo.transform.name == "Salmon Fillet" || _hitInfo.transform.tag == "SalmonFillet" ||
+                     _hitInfo.transform.tag == "blackpepper" || _hitInfo.transform.tag == "drilldried" || _hitInfo.transform.tag == "Tomato" || _hitInfo.transform.tag == "tomato" ||
+                     _hitInfo.transform.tag == "Potato" || _hitInfo.transform.tag == "potato" || _hitInfo.transform.tag == "Lemon" || _hitInfo.transform.tag == "lemon" || _hitInfo.transform.tag == "Meat" || _hitInfo.transform.tag == "meat"
+                    || _hitInfo.transform.tag == "Fish" || _hitInfo.transform.tag == "fish"
+                     ))
                 {
-
-                    outline = _hitInfo.transform.gameObject;
-                    if (!OUTline.Contains(outline))
+                    if (_hitInfo.transform.tag == "Tomato" || _hitInfo.transform.tag == "tomato")
                     {
-                        OUTline.Add(outline);
-                    }
-                    HighlightObject();
-                    outline.GetComponent<Outline>().enabled = true;
-                    foreach (Sprite rendere in Sprites)
-                    {
-                        if (rendere.name == _hitInfo.transform.tag)
+                        outline = _hitInfo.transform.gameObject;
+                        if (!OUTline.Contains(outline))
                         {
-                            justNamerenderer.GetComponent<Image>().sprite = rendere;
+                            OUTline.Add(outline);
                         }
-                    }
-                    justName.SetActive(true);
-                    justNametext.text = _hitInfo.transform.tag;
-                    pickbtn.SetActive(true);
-                }
-                else if (_hitInfo.transform.tag == "Tomato" || _hitInfo.transform.tag == "tomato")
-                {
-                    outline = _hitInfo.transform.gameObject;
-                    if (!OUTline.Contains(outline))
-                    {
-                        OUTline.Add(outline);
-                    }
-                    HighlightObject();
-                    outline.GetComponent<Outline>().enabled = true;
-                    foreach (Sprite rendere in Sprites)
-                    {
-                        if (rendere.name == "tomato")
+                        HighlightObject();
+                        outline.GetComponent<Outline>().enabled = true;
+                        foreach (Sprite rendere in Sprites)
                         {
-                            NameRender.GetComponent<Image>().sprite = rendere;
+                            if (rendere.name == "tomato")
+                            {
+                                NameRender.GetComponent<Image>().sprite = rendere;
+                            }
                         }
+                        ItemNameImage.SetActive(true);
+                        ItemName.text = "Tomato";
+                        ItemWeight.text = "50g";
+                        pickbtn.SetActive(true);
                     }
-                    ItemNameImage.SetActive(true);
-                    ItemName.text = "Tomato";
-                    ItemWeight.text = "50g";
-                    pickbtn.SetActive(true);
-                }
-                else if (_hitInfo.transform.name == "Salmon Fillet" || _hitInfo.transform.tag == "SalmonFillet")
-                {
-                    outline = _hitInfo.transform.gameObject;
-                    if (!OUTline.Contains(outline))
+                    else if (_hitInfo.transform.name == "Salmon Fillet" || _hitInfo.transform.tag == "SalmonFillet")
                     {
-                        OUTline.Add(outline);
-                    }
-                    HighlightObject();
-                    outline.GetComponent<Outline>().enabled = true;
-                    foreach (Sprite rendere in Sprites)
-                    {
-                        if (rendere.name == "Salmon Fillet")
+                        outline = _hitInfo.transform.gameObject;
+                        if (!OUTline.Contains(outline))
                         {
-                            NameRender.GetComponent<Image>().sprite = rendere;
+                            OUTline.Add(outline);
                         }
+                        HighlightObject();
+                        outline.GetComponent<Outline>().enabled = true;
+                        foreach (Sprite rendere in Sprites)
+                        {
+                            if (rendere.name == "Salmon Fillet")
+                            {
+                                NameRender.GetComponent<Image>().sprite = rendere;
+                            }
+                        }
+                        ItemNameImage.SetActive(true);
+                        ItemName.text = "Salmon";
+                        ItemWeight.text = "210g";
+                        pickbtn.SetActive(true);
                     }
-                    ItemNameImage.SetActive(true);
-                    ItemName.text = "Salmon";
-                    ItemWeight.text = "210g";
-                    pickbtn.SetActive(true);
+                    else if (_hitInfo.transform.tag == "Onion" || _hitInfo.transform.tag == "onion")
+                    {
+                        outline = _hitInfo.transform.gameObject;
+                        if (!OUTline.Contains(outline))
+                        {
+                            OUTline.Add(outline);
+                        }
+                        HighlightObject();
+                        outline.GetComponent<Outline>().enabled = true;
+                        foreach (Sprite rendere in Sprites)
+                        {
+                            if (rendere.name == "onion")
+                            {
+                                NameRender.GetComponent<Image>().sprite = rendere;
+                            }
+                        }
+                        ItemNameImage.SetActive(true);
+                        ItemName.text = "Onion";
+                        ItemWeight.text = "120g";
+                        pickbtn.SetActive(true);
+                    }
+                    else if (_hitInfo.transform.tag == "Potato" || _hitInfo.transform.tag == "potato")
+                    {
+                        outline = _hitInfo.transform.gameObject;
+                        if (!OUTline.Contains(outline))
+                        {
+                            OUTline.Add(outline);
+                        }
+                        HighlightObject();
+                        outline.GetComponent<Outline>().enabled = true;
+                        foreach (Sprite rendere in Sprites)
+                        {
+                            if (rendere.name == "potato")
+                            {
+                                NameRender.GetComponent<Image>().sprite = rendere;
+                            }
+                        }
+                        ItemNameImage.SetActive(true);
+                        ItemName.text = "Potato";
+                        ItemWeight.text = "100g";
+                        pickbtn.SetActive(true);
+                    }
+                    else if (_hitInfo.transform.tag == "Lemon" || _hitInfo.transform.tag == "lemon")
+                    {
+                        outline = _hitInfo.transform.gameObject;
+                        if (!OUTline.Contains(outline))
+                        {
+                            OUTline.Add(outline);
+                        }
+                        HighlightObject();
+                        outline.GetComponent<Outline>().enabled = true;
+                        foreach (Sprite rendere in Sprites)
+                        {
+                            if (rendere.name == "lemon")
+                            {
+                                NameRender.GetComponent<Image>().sprite = rendere;
+                            }
+                        }
+                        ItemNameImage.SetActive(true);
+                        ItemName.text = "Lemon";
+                        ItemWeight.text = "80g";
+                        pickbtn.SetActive(true);
+                    }
+                    else if (_hitInfo.transform.tag == "Meat" || _hitInfo.transform.tag == "meat")
+                    {
+                        DestroyInstantiatedPrefabs();
+                        outline = _hitInfo.transform.gameObject;
+                        if (!OUTline.Contains(outline))
+                        {
+                            OUTline.Add(outline);
+                        }
+                        HighlightObject();
+                        outline.GetComponent<Outline>().enabled = true;
+                        foreach (Sprite rendere in Sprites)
+                        {
+                            if (rendere.name == "meat")
+                            {
+                                NameRender.GetComponent<Image>().sprite = rendere;
+                            }
+                        }
+                        ItemNameImage.SetActive(true);
+                        ItemName.text = "Steak";
+                        ItemWeight.text = "150g";
+                        pickbtn.SetActive(true);
+                    }
+                    else if (_hitInfo.transform.tag == "Fish" || _hitInfo.transform.tag == "fish")
+                    {
+                        outline = _hitInfo.transform.gameObject;
+                        if (!OUTline.Contains(outline))
+                        {
+                            OUTline.Add(outline);
+                        }
+                        HighlightObject();
+                        outline.GetComponent<Outline>().enabled = true;
+                        foreach (Sprite rendere in Sprites)
+                        {
+                            if (rendere.name == "trout")
+                            {
+                                NameRender.GetComponent<Image>().sprite = rendere;
+                            }
+                        }
+                        ItemNameImage.SetActive(true);
+                        ItemName.text = "Trout";
+                        ItemWeight.text = "200g";
+                        pickbtn.SetActive(true);
+                    }
+                    else
+                    {
+                        outline = _hitInfo.transform.gameObject;
+                        if (!OUTline.Contains(outline))
+                        {
+                            OUTline.Add(outline);
+                        }
+                        HighlightObject();
+                        outline.GetComponent<Outline>().enabled = true;
+                        foreach (Sprite rendere in Sprites)
+                        {
+                            if (rendere.name == _hitInfo.transform.tag)
+                            {
+                                justNamerenderer.GetComponent<Image>().sprite = rendere;
+                            }
+                        }
+                        justName.SetActive(true);
+                        justNametext.text = _hitInfo.transform.tag;
+                        pickbtn.SetActive(true);
+                    }
                 }
+                
                 else if (pickedObj2.tag == "Order" && (
                pickedObj.tag == "Large Plate Basic" || pickedObj.tag == "Medium Plate Basic" ||
                pickedObj.tag == "Casserole , Basic" || pickedObj.tag == "Small Bowl , Basic" ||
@@ -1207,112 +1306,6 @@ public class PickNDrop : MonoBehaviour
                pickedObj.tag == "Small Deep PLate, Basic" || pickedObj.tag == "Deep Plate, Basic"))
                 {
                     PLaceOrder.SetActive(true);
-                }
-                else if (_hitInfo.transform.tag == "Onion" || _hitInfo.transform.tag == "onion")
-                {
-                    outline = _hitInfo.transform.gameObject;
-                    if (!OUTline.Contains(outline))
-                    {
-                        OUTline.Add(outline);
-                    }
-                    HighlightObject();
-                    outline.GetComponent<Outline>().enabled = true;
-                    foreach (Sprite rendere in Sprites)
-                    {
-                        if (rendere.name == "onion")
-                        {
-                            NameRender.GetComponent<Image>().sprite = rendere;
-                        }
-                    }
-                    ItemNameImage.SetActive(true);
-                    ItemName.text = "Onion";
-                    ItemWeight.text = "120g";
-                    pickbtn.SetActive(true);
-                }
-                else if (_hitInfo.transform.tag == "Potato" || _hitInfo.transform.tag == "potato")
-                {
-                    outline = _hitInfo.transform.gameObject;
-                    if (!OUTline.Contains(outline))
-                    {
-                        OUTline.Add(outline);
-                    }
-                    HighlightObject();
-                    outline.GetComponent<Outline>().enabled = true;
-                    foreach (Sprite rendere in Sprites)
-                    {
-                        if (rendere.name == "potato")
-                        {
-                            NameRender.GetComponent<Image>().sprite = rendere;
-                        }
-                    }
-                    ItemNameImage.SetActive(true);
-                    ItemName.text = "Potato";
-                    ItemWeight.text = "100g";
-                    pickbtn.SetActive(true);
-                }
-                else if (_hitInfo.transform.tag == "Lemon" || _hitInfo.transform.tag == "lemon")
-                {
-                    outline = _hitInfo.transform.gameObject;
-                    if (!OUTline.Contains(outline))
-                    {
-                        OUTline.Add(outline);
-                    }
-                    HighlightObject();
-                    outline.GetComponent<Outline>().enabled = true;
-                    foreach (Sprite rendere in Sprites)
-                    {
-                        if (rendere.name == "lemon")
-                        {
-                            NameRender.GetComponent<Image>().sprite = rendere;
-                        }
-                    }
-                    ItemNameImage.SetActive(true);
-                    ItemName.text = "Lemon";
-                    ItemWeight.text = "80g";
-                    pickbtn.SetActive(true);
-                }
-                else if (_hitInfo.transform.tag == "Meat" || _hitInfo.transform.tag == "meat")
-                {
-                    DestroyInstantiatedPrefabs();
-                    outline = _hitInfo.transform.gameObject;
-                    if (!OUTline.Contains(outline))
-                    {
-                        OUTline.Add(outline);
-                    }
-                    HighlightObject();
-                    outline.GetComponent<Outline>().enabled = true;
-                    foreach (Sprite rendere in Sprites)
-                    {
-                        if (rendere.name == "meat")
-                        {
-                            NameRender.GetComponent<Image>().sprite = rendere;
-                        }
-                    }
-                    ItemNameImage.SetActive(true);
-                    ItemName.text = "Steak";
-                    ItemWeight.text = "150g";
-                    pickbtn.SetActive(true);
-                }
-                else if (_hitInfo.transform.tag == "Fish" || _hitInfo.transform.tag == "fish")
-                {
-                    outline = _hitInfo.transform.gameObject;
-                    if (!OUTline.Contains(outline))
-                    {
-                        OUTline.Add(outline);
-                    }
-                    HighlightObject();
-                    outline.GetComponent<Outline>().enabled = true;
-                    foreach (Sprite rendere in Sprites)
-                    {
-                        if (rendere.name == "fish")
-                        {
-                            NameRender.GetComponent<Image>().sprite = rendere;
-                        }
-                    }
-                    ItemNameImage.SetActive(true);
-                    ItemName.text = "Trout";
-                    ItemWeight.text = "200g";
-                    pickbtn.SetActive(true);
                 }
                 else if (_hitInfo.transform.tag == "PLaceInOven")
                 {
@@ -1495,8 +1488,6 @@ public class PickNDrop : MonoBehaviour
                 Childcount = true;
                 DestroyInstantiatedPrefabs();
             }
-
-
         }
         else
         {
@@ -2286,18 +2277,19 @@ public class PickNDrop : MonoBehaviour
 
     public void PLaceBtn()
     {
+        print("nnnnnnnnnnnnn");
         PlacePosition = _hitInfo.transform.position;
         if (_hitInfo.transform.name == "Pro Cutter")
         {
             PlacePosition = PlaceCuttertTry.position ;
             StartCoroutine(PlaceObject1());
         }
-        else if (_hitInfo.transform.tag == "OvenPlace")
+        else if (_hitInfo.collider.gameObject.tag == "OvenPlace")
         {
             pickedObj.parent = null;
-            PlacePosition = PlacePosition - new Vector3(0, 0.01f, 0);
+            PlacePosition = _hitInfo.collider.transform.position + new Vector3(0, 0.01f,0 );
             StartCoroutine(PlaceObject2());
-            if(pickedObj.childCount!=0)
+            if(pickedObj.childCount > 1)
             {
                 Baking = true;
             }
@@ -2333,6 +2325,7 @@ public class PickNDrop : MonoBehaviour
             {
                 PlacePosition = PlacePosition + new Vector3(0, 0.1f, 0);
                 StartCoroutine(PlaceObject1());
+
             }
         }
         else if (_hitInfo.transform.name == "Juicer Base")
@@ -2349,9 +2342,7 @@ public class PickNDrop : MonoBehaviour
         {
             StartCoroutine(PlaceObject1());
         }
-        
     }
-
     IEnumerator PlaceObject1()
     {
         pickedObj.parent = null;
@@ -2501,7 +2492,7 @@ public class PickNDrop : MonoBehaviour
         {
             GameObject instantiatedObject = Instantiate(objectPrefabs[14], pickedObj.transform.position, Quaternion.identity);
             pickedObj2 = instantiatedObject.transform;
-            instantiatedPrefabs.Add(instantiatedObject);
+            InstantiateObject.Add(instantiatedObject);
         }
         picUpOjects2List.Add(pickedObj2);
         pickedObj2.transform.parent = pickedObj.transform;
@@ -3243,9 +3234,7 @@ public class PickNDrop : MonoBehaviour
         ChickenBroutebtn.SetActive(false);
         BackinteractchikenBtn.SetActive(false);
         StartCoroutine(MoveCap(dropDistance));
-
-        // Rotate the cap to the closed position
-        StartCoroutine(RotateCap(closedPosition));
+        StartCoroutine(RotateCap(0));
         PlayerPrefs.SetInt("Interact", 0);
     }
 
@@ -3254,15 +3243,25 @@ public class PickNDrop : MonoBehaviour
         while (Mathf.Abs(capTransform.localRotation.eulerAngles.x - targetRotation) > 0.1f)
         {
             // Rotate towards the target rotation
-            capTransform.localRotation = Quaternion.Lerp(capTransform.localRotation, Quaternion.Euler(targetRotation, 0, 0), Time.deltaTime * rotationSpeed);
+            capTransform.localRotation = Quaternion.Lerp(capTransform.localRotation, Quaternion.Euler(0, targetRotation, 0), Time.deltaTime * rotationSpeed);
 
             yield return null;
         }
+        capTransform.localRotation = Quaternion.Euler(0, 0, 0);
     }
     private IEnumerator MoveCap(float distance)
     {
         Vector3 initialPosition = capTransform.position;
-        Vector3 targetPosition =  new Vector3(0.1f, 0.086f, -0.03f);
+        Vector3 targetPosition;
+        if (open)
+        {
+            targetPosition = new Vector3(0.5f, 0.086f, -0.03f);
+        }
+        else
+        {
+
+            targetPosition = new Vector3(-0.01101303f, 0.08851635f, -0.03104365f);
+        }
 
         float elapsedTime = 0f;
         float duration = 1f;  // Adjust the duration of the drop or rise
@@ -3270,15 +3269,17 @@ public class PickNDrop : MonoBehaviour
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-
             // Move towards the target position
             capTransform.localPosition = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / duration);
-
             yield return null;
         }
         if (open)
         {
             capTransform.gameObject.AddComponent<Rigidbody>();
+        }
+        else
+        {
+            capTransform.localPosition = new Vector3(-0.01101303f, 0.08851635f, -0.03104365f); 
         }
 
     }

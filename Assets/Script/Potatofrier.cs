@@ -37,7 +37,9 @@ public class Potatofrier : MonoBehaviour
                             if (child.tag == "potato" || child.tag == "potato1")
                             {
                                 if (child.GetComponent<Renderer>().material == friedPotatoMaterial)
-                                child.GetComponent<Renderer>().material = OverfriedPotatoMaterial;
+                                {
+                                    child.GetComponent<Renderer>().material = OverfriedPotatoMaterial;
+                                }
                             }
                         }
                     }
@@ -84,7 +86,7 @@ public class Potatofrier : MonoBehaviour
           Renderer childRenderer = child.GetComponent<Renderer>();
         Material originalMaterial = childRenderer.material;
         float elapsedTime = 0f;
-          float duration = 1.3f; 
+          float duration = 1f; 
           while (elapsedTime < duration)
           {
                elapsedTime += Time.deltaTime;
