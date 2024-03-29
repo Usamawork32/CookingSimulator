@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 namespace LiquidVolumeFX
 {
     public class ChickenBrouth : MonoBehaviour
@@ -81,6 +82,9 @@ namespace LiquidVolumeFX
                     level = Bigpot.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level;
                     level += 0.05f * Time.deltaTime;
                     level = Mathf.Clamp(level, 0f, 0.7f);
+                    int BrouthQuantity = Mathf.RoundToInt(720f - (float)level * 1028.5f);
+                    transform.GetChild(3).transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = BrouthQuantity.ToString() + "g";
+                    transform.gameObject.GetComponent<SpiceQuantity>().Quantity = BrouthQuantity;
                     Bigpot.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level = level;
                     if (childRotating)
                     {
@@ -92,8 +96,11 @@ namespace LiquidVolumeFX
         }
         public void ONBroutebtnDown()
         {
+            if (transform.gameObject.GetComponent<SpiceQuantity>().Quantity > 5)
+            {
+                BrouteEffect.gameObject.SetActive(true);
+            }
             child = true;
-            BrouteEffect.gameObject.SetActive(true);
             rotation = transform.rotation;
             childRotating = true;
 

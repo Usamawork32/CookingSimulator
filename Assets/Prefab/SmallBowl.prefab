@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _topology: 1
   _detail: 11
-  _level: 0
+  _level: 1
   _levelMultiplier: 1
   _liquidLayers: []
   _smoothContactSurface: 3
@@ -109,7 +109,7 @@ MonoBehaviour:
   _liquidScale1: 0.83
   _liquidColor2: {r: 0.46226418, g: 0.26383945, b: 0.29856372, a: 1}
   _liquidScale2: 4.85
-  _alpha: 1
+  _alpha: 0
   _emissionColor: {r: 0.036643554, g: 0.03773582, b: 0.03292984, a: 1}
   _emissionBrightness: 0
   _ditherShadows: 0

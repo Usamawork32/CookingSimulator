@@ -124,7 +124,6 @@ public class PickNDrop : MonoBehaviour
         SoundOn.SetActive(false);
         BackgroundAudio.mute = true;
     }
-
     public void SavePickedObjet()
     {
         
@@ -159,6 +158,7 @@ public class PickNDrop : MonoBehaviour
         PlayerPrefs.SetInt("Second4", 0);
         PlayerPrefs.SetInt("Minute1", 0);
         PlayerPrefs.SetInt("Second1", 0);
+        OrderManager.Instance.startCoroutine();
     }
     public void Reload()
     {
@@ -166,6 +166,7 @@ public class PickNDrop : MonoBehaviour
         Audio.Play();
         Invoke("INVOKREELOAD", 1f);
         functionality();
+        OrderManager.Instance.startCoroutine();
     }
     public void functionality()
     {
@@ -478,9 +479,10 @@ public class PickNDrop : MonoBehaviour
                             NameRender.GetComponent<Image>().sprite = rendere;
                         }
                     }
-                    ItemNameImage.SetActive(true);
+                    justName.SetActive(false); ItemNameImage.SetActive(false);
                     ItemName.text = _hitInfo.transform.name;
                     ItemWeight.text = _hitInfo.transform.gameObject.GetComponent<SpiceQuantity>().Quantity.ToString() + "g";
+                    ItemNameImage.SetActive(true);
                     pickbtn.SetActive(true);
                 }
                 else if (_hitInfo.transform.tag == "Large Plate Basic" || _hitInfo.transform.tag == "Medium Plate Basic" ||
@@ -511,7 +513,7 @@ public class PickNDrop : MonoBehaviour
                                 justNamerenderer.GetComponent<Image>().sprite = rendere;
                             }
                         }
-                        justName.SetActive(true);
+                        justName.SetActive(true); ItemNameImage.SetActive(false);
                         justNametext.text = _hitInfo.transform.tag;
                         pickbtn.SetActive(true);
                     }
@@ -531,7 +533,7 @@ public class PickNDrop : MonoBehaviour
                                 justNamerenderer.GetComponent<Image>().sprite = rendere;
                             }
                         }
-                        justName.SetActive(true);
+                        justName.SetActive(true); ItemNameImage.SetActive(false);
                         justNametext.text = _hitInfo.transform.name;
                         pickbtn.SetActive(true);
                         if (Childcount)
@@ -539,7 +541,7 @@ public class PickNDrop : MonoBehaviour
                             ChildCount();
                         }
                         verticallayout.gameObject.SetActive(true);
-                        
+
                     }
                 }
                 else if (_hitInfo.transform.tag == "MilkCream" || _hitInfo.transform.tag == "BakingTray"
@@ -589,6 +591,7 @@ public class PickNDrop : MonoBehaviour
                         }
                         justName.SetActive(true);
                         justNametext.text = _hitInfo.transform.tag;
+                        ItemNameImage.SetActive(false);
                         pickbtn.SetActive(true);
                         if (Childcount)
                         {
@@ -597,8 +600,7 @@ public class PickNDrop : MonoBehaviour
                         verticallayout.gameObject.SetActive(true);
                     }
                 }
-                else if (_hitInfo.transform.tag == "Timeknob" || _hitInfo.transform.tag == "Knief"
-                    || _hitInfo.transform.tag == "FryPan" || _hitInfo.transform.tag == "PellaPan")
+                else if (_hitInfo.transform.tag == "FryPan" || _hitInfo.transform.tag == "PellaPan" || _hitInfo.transform.tag == "BigPot") 
                 {
                     if (OUtline && outline != null && outline.tag != _hitInfo.transform.gameObject.tag && outline.name != _hitInfo.transform.gameObject.name)
                     {
@@ -642,7 +644,7 @@ public class PickNDrop : MonoBehaviour
                                 justNamerenderer.GetComponent<Image>().sprite = rendere;
                             }
                         }
-                        justName.SetActive(true);
+                        justName.SetActive(true); ItemNameImage.SetActive(false);
                         justNametext.text = _hitInfo.transform.tag;
                         pickbtn.SetActive(true);
                         if (Childcount)
@@ -652,7 +654,7 @@ public class PickNDrop : MonoBehaviour
                         verticallayout.gameObject.SetActive(true);
                     }
                 }
-                else if (_hitInfo.transform.tag == "JuicerJug" || _hitInfo.transform.tag == "BigPot")
+                else if (_hitInfo.transform.tag == "JuicerJug" || _hitInfo.transform.tag == "Timeknob" || _hitInfo.transform.tag == "Knief")
                 {
                     outline = _hitInfo.transform.gameObject;
                     if (!OUTline.Contains(outline))
@@ -668,9 +670,9 @@ public class PickNDrop : MonoBehaviour
                             justNamerenderer.GetComponent<Image>().sprite = rendere;
                         }
                     }
-
-                    justName.SetActive(true);
                     justNametext.text = _hitInfo.transform.name;
+                    justName.SetActive(true);
+                    ItemNameImage.SetActive(false);
                     pickbtn.SetActive(true);
                 }
                 else if (_hitInfo.transform.name == "Phone")
@@ -690,6 +692,7 @@ public class PickNDrop : MonoBehaviour
                         }
                     }
                     justName.SetActive(true);
+                    ItemNameImage.SetActive(false);
                     justNametext.text = _hitInfo.transform.name;
                     pickbtn.SetActive(true);
                 }
@@ -710,6 +713,7 @@ public class PickNDrop : MonoBehaviour
                         }
                     }
                     ItemNameImage.SetActive(true);
+                    justName.SetActive(false);
                     ItemName.text = "Chicken Broute";
                     ItemWeight.text = "720g";
                     pickbtn.SetActive(true);
@@ -731,7 +735,7 @@ public class PickNDrop : MonoBehaviour
                             NameRender.GetComponent<Image>().sprite = rendere;
                         }
                     }
-                    ItemNameImage.SetActive(true);
+                    ItemNameImage.SetActive(true); justName.SetActive(false);
                     ItemName.text = "Salmon";
                     ItemWeight.text = "210g";
                     pickbtn.SetActive(true);
@@ -753,6 +757,7 @@ public class PickNDrop : MonoBehaviour
                         }
                     }
                     justName.SetActive(true);
+                    ItemNameImage.SetActive(false);
                     justNametext.text = _hitInfo.transform.name;
                     pickbtn.SetActive(true);
                 }
@@ -773,6 +778,7 @@ public class PickNDrop : MonoBehaviour
                         }
                     }
                     justName.SetActive(true);
+                    ItemNameImage.SetActive(false);
                     justNametext.text = _hitInfo.transform.name;
                     pickbtn.SetActive(true);
                 }
@@ -793,7 +799,7 @@ public class PickNDrop : MonoBehaviour
                             NameRender.GetComponent<Image>().sprite = rendere;
                         }
                     }
-                    ItemNameImage.SetActive(true);
+                    ItemNameImage.SetActive(true); justName.SetActive(false);
                     ItemName.text = "Onion";
                     ItemWeight.text = "120g";
                     pickbtn.SetActive(true);
@@ -814,7 +820,7 @@ public class PickNDrop : MonoBehaviour
                             NameRender.GetComponent<Image>().sprite = rendere;
                         }
                     }
-                    ItemNameImage.SetActive(true);
+                    ItemNameImage.SetActive(true); justName.SetActive(false);
                     ItemName.text = "Tomato";
                     ItemWeight.text = "50g";
                     print("tomato");
@@ -837,7 +843,7 @@ public class PickNDrop : MonoBehaviour
                             NameRender.GetComponent<Image>().sprite = rendere;
                         }
                     }
-                    ItemNameImage.SetActive(true);
+                    ItemNameImage.SetActive(true); justName.SetActive(false);
                     ItemName.text = "Steak";
                     ItemWeight.text = "150g";
                     pickbtn.SetActive(true);
@@ -859,7 +865,7 @@ public class PickNDrop : MonoBehaviour
                             NameRender.GetComponent<Image>().sprite = rendere;
                         }
                     }
-                    ItemNameImage.SetActive(true);
+                    ItemNameImage.SetActive(true); justName.SetActive(false);
                     ItemName.text = "Potato";
                     ItemWeight.text = "100g";
                     pickbtn.SetActive(true);
@@ -881,7 +887,7 @@ public class PickNDrop : MonoBehaviour
                             NameRender.GetComponent<Image>().sprite = rendere;
                         }
                     }
-                    ItemNameImage.SetActive(true);
+                    ItemNameImage.SetActive(true); justName.SetActive(false);
                     ItemName.text = "Potato";
                     ItemWeight.text = " 8g ";
                     pickbtn.SetActive(true);
@@ -903,7 +909,7 @@ public class PickNDrop : MonoBehaviour
                             NameRender.GetComponent<Image>().sprite = rendere;
                         }
                     }
-                    ItemNameImage.SetActive(true);
+                    ItemNameImage.SetActive(true); justName.SetActive(false);
                     ItemName.text = "Lemon";
                     ItemWeight.text = "80g";
                     pickbtn.SetActive(true);
@@ -925,7 +931,7 @@ public class PickNDrop : MonoBehaviour
                             NameRender.GetComponent<Image>().sprite = rendere;
                         }
                     }
-                    ItemNameImage.SetActive(true);
+                    ItemNameImage.SetActive(true); justName.SetActive(false);
                     ItemName.text = "Trout";
                     ItemWeight.text = "200g";
                     pickbtn.SetActive(true);
@@ -966,7 +972,7 @@ public class PickNDrop : MonoBehaviour
                             justNamerenderer.GetComponent<Image>().sprite = rendere;
                         }
                     }
-                    justName.SetActive(true);
+                    justName.SetActive(true);ItemNameImage.SetActive(false);
                     justNametext.text = _hitInfo.transform.name;
                     pickbtn.SetActive(true);
                 }
@@ -1038,7 +1044,6 @@ public class PickNDrop : MonoBehaviour
                         outline.GetComponent<Outline>().enabled = false;
                         outline = null;
                     }
-
                     InteractButton.SetActive(false);
                     PLaceBtnn.SetActive(true);
                     potatoCutBtn.SetActive(false);
@@ -1317,7 +1322,7 @@ public class PickNDrop : MonoBehaviour
                           _hitInfo.transform.tag == "BakingTray" || _hitInfo.transform.tag == "FryPan" || _hitInfo.transform.tag == "CuttingBoard"
                         || _hitInfo.transform.tag == "cuttertry" || _hitInfo.transform.tag == "BigPot" || _hitInfo.transform.tag == "Medium Plate,  Basic"
                         || _hitInfo.transform.tag == "Large Plate Basic" || _hitInfo.transform.tag == "Small Bowl , Basic" || _hitInfo.transform.tag == "Medium Plate Basic"
-                        || _hitInfo.transform.tag == "fish"|| _hitInfo.transform.tag == "Casserole , Basic"))
+                        ||  _hitInfo.transform.tag == "Casserole , Basic"))
                 {
                     Spicebtn.SetActive(true);
                 }
@@ -1902,7 +1907,7 @@ public class PickNDrop : MonoBehaviour
                 if (pickedObj2.tag == "Lemon" || pickedObj2.tag == "Tomato" || pickedObj2.tag == "Onion" || pickedObj2.tag == "Potato" || pickedObj2.tag == "Fish" || pickedObj2.tag == "Meat")
                 {
                     OPTL2Prefab();
-                    print("instantiating");
+                   
 
                 }
                 else if (pickedObj2.tag == "lemon" || pickedObj2.tag == "potato" || pickedObj2.tag == "meat" ||
@@ -2502,6 +2507,7 @@ public class PickNDrop : MonoBehaviour
         rb2.mass = 5;
         rb2.angularDrag = 2f;
         rb2.drag = 2f;
+       // rb2.isKinematic = true;
         Invoke("rigidbodyoff", 1f);
 
     }
@@ -2654,14 +2660,14 @@ public class PickNDrop : MonoBehaviour
         pickedObj.parent = null;
         if (dustbin.name== "dustbin opener 2")
         {
-            StartCoroutine(DustObject(dustpos2.position));
+            StartCoroutine(DustObject(dustpos2.position, dustbin.gameObject));
         }
         else if (dustbin.name == "dustbin opener 1")
         {
-            StartCoroutine(DustObject(dustpos1.position));
+            StartCoroutine(DustObject(dustpos1.position, dustbin.gameObject));
         }
     }
-    IEnumerator DustObject(Vector3 hitTransform)
+    IEnumerator DustObject(Vector3 hitTransform,GameObject DustObj)
     {
         Vector3 hitPosition = hitTransform;
         // Move the picked object smoothly to the hit position
@@ -2686,6 +2692,7 @@ public class PickNDrop : MonoBehaviour
         StartCoroutine(RotateToTarget(dustbin, targetRotation));
         pickedObj = null;
         picUpOjectsList.Clear();
+        Destroy(DustObj);
     }
     public bool OnMaterial = false;
     public bool OffMaterial = false;
@@ -2955,8 +2962,73 @@ public class PickNDrop : MonoBehaviour
         yposition = PickupPosition;
         pickedRotation = Quaternion.Euler(150, 90, 0);
         pickedObj.GetChild(0).gameObject.SetActive(true);
+        int a = 0; 
+        if (pickedObj.tag == "cayennepepper")
+        {
+            foreach (Transform child in _hitInfo.transform)
+            {
+                if (child.tag == "Cayenna Pepper")
+                {
+                    a++;
+                }
+            }
+        }
+        else if (pickedObj.tag == "horsera")
+        {
+            foreach (Transform child in _hitInfo.transform)
+            {
+                if (child.tag == "Horseria")
+                {
+                    a++;
+                }
+            }
+        }
+        else if (pickedObj.tag == "salt")
+        {
+            foreach (Transform child in _hitInfo.transform)
+            {
+                if (child.tag == "Salt.")
+                {
+                    a++;
+                }
+            }
+        }
+        else if (pickedObj.tag == "thymedried")
+        {
+            foreach (Transform child in _hitInfo.transform)
+            {
+                if (child.tag == "Thyme Dried")
+                {
+                    a++;
+                }
+            }
+        }
+        else if (pickedObj.tag == "blackpepper")
+        {
+            foreach (Transform child in _hitInfo.transform)
+            {
+                if (child.tag == "BlackPepper")
+                {
+                    a++;
+                }
+            }
+        }
+        else if (pickedObj.tag == "drilldried")
+        {
+            foreach (Transform child in _hitInfo.transform)
+            {
+                if (child.tag == "Dril Dried")
+                {
+                    a++;
+                }
+            }
+
+        }
+        SpicerackRayCast.SpiceInt = a;
+        pickedObj.GetChild(2).transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = a.ToString() + "g";
+        pickedObj.GetChild(2).gameObject.SetActive(true);
         EnvCamera.SetActive(true);
-        FPSCotroller.SetActive(false);      
+        FPSCotroller.SetActive(false);
         StartCoroutine(doubleok());
         Spicebtn.SetActive(false);
         BackFromSpice.SetActive(true);
@@ -2967,6 +3039,7 @@ public class PickNDrop : MonoBehaviour
     {
         DuringCutting = true;
         pickedObj.GetChild(0).gameObject.SetActive(false);
+        pickedObj.GetChild(2).gameObject.SetActive(false);
         FPSCotroller.SetActive(true);
         EnvCamera.SetActive(false);
         pickedObj.transform.parent = fpsContollar.transform;
@@ -3207,6 +3280,8 @@ public class PickNDrop : MonoBehaviour
         Chickenbroute = true;
         ChickenBroutebtn.SetActive(true);
         pickedObj.gameObject.GetComponent<LineRenderer>().enabled = false;
+        pickedObj.transform.GetChild(3).gameObject.SetActive(true);
+        pickedObj.GetChild(3).transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = pickedObj.gameObject.GetComponent<SpiceQuantity>().Quantity.ToString() + "g";
         PlayerPrefs.SetInt("Interact", 2);
        
     }
@@ -3226,6 +3301,7 @@ public class PickNDrop : MonoBehaviour
         pickedObj.GetComponent<MeshCollider>().enabled = true;
         FPSCotroller.SetActive(true);
         EnvCamera.SetActive(false);
+        pickedObj.transform.GetChild(3).gameObject.SetActive(false);
         pickedObj.transform.parent = fpsContollar.transform;
         PickupPosition = TempPOsRot.localPosition;
         pickedRotation = TempPOsRot.localRotation;
@@ -3255,7 +3331,7 @@ public class PickNDrop : MonoBehaviour
         Vector3 targetPosition;
         if (open)
         {
-            targetPosition = new Vector3(0.5f, 0.086f, -0.03f);
+            targetPosition = new Vector3(0.5f, 1f, -1f);
         }
         else
         {
@@ -3350,11 +3426,98 @@ public class PickNDrop : MonoBehaviour
             Audio.Play();
             PLaceOrderAnim.SetBool("Anim", false);
             order.parent = null;
-            order.gameObject.SetActive(false);
-            order = null;
+            AnalyzeOrder();
         }
     }
 
+    public void AnalyzeOrder()
+    {
+        int a = OrderManager.Instance.currentOrder;
+        int b = 0;
+        HashSet<string> uniqueTags = new HashSet<string>(); // To store unique tags encountered
+
+        if (a == 2)
+        {
+            foreach (Transform child in order)
+            {
+                if (child.tag == "fish" || child.tag == "potato")
+                {
+                    if (uniqueTags.Add(child.tag)) 
+                    {
+                        b++; 
+                    }
+                }
+            }
+            if(b>=2)
+            {
+                OrderManager.Instance.OrderCompleteOnTime(1);
+            }
+            else{
+                OrderManager.Instance.OrderCompleteOnTime(2);
+            }
+        }
+        else if (a == 3)
+        {
+            foreach (Transform child in order)
+            {
+                if (child.tag == "potato1" || child.tag == "Salt." || child.tag == "BlackPepper" || child.tag == "Cayenna Pepper")
+                {
+                    if (uniqueTags.Add(child.tag))
+                    {
+                        b++; 
+                    }
+                }
+            }
+            if (b >= 4)
+            {
+                OrderManager.Instance.OrderCompleteOnTime(1);
+            }
+            else
+            {
+                OrderManager.Instance.OrderCompleteOnTime(2);
+            }
+        }
+        else if (a == 1)
+        {
+            foreach (Transform child in order)
+            {
+                if (child.tag == "Salmonillet"   )
+                {
+                    if (child.gameObject.GetComponent<MeshRenderer>().material.name.Contains("friedsalmon"))
+                    {
+                        if (uniqueTags.Add(child.tag))
+                        {
+                            b++;
+                        }
+                    }
+                }
+                else if(child.tag == "Salt." || child.tag == "BlackPepper"|| child.tag == "lemon")
+                {
+                    if (uniqueTags.Add(child.tag))
+                    {
+                        b++;
+                    }
+                }
+            }
+            if (b >= 4)
+            {
+                OrderManager.Instance.OrderCompleteOnTime(1);
+            }
+            else
+            {
+                OrderManager.Instance.OrderCompleteOnTime(2);
+            }
+        }
+        else if (a == 0)
+        {
+            if (order.GetChild(1) != null)
+            {
+               
+            }
+        }
+            Destroy(order.gameObject);
+        order = null;
+    }
     public void BakingTheObject()
     {
         foreach (Transform child in BakedObject)
