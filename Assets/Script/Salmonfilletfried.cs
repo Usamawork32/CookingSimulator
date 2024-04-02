@@ -31,11 +31,8 @@ public class Salmonfilletfried : MonoBehaviour
                 {
                     if (!isFrying && PickNDrop.burner1)
                     {
-
-                      
                         isFrying = true;
                         StartCoroutine(Fryfish());
-
                     }
                     if (PickNDrop.burner1 && isTrigger)
                     {
@@ -163,6 +160,7 @@ public class Salmonfilletfried : MonoBehaviour
         {
             if (child.tag == "SalmonFillet")
             {
+                child.GetComponent<Renderer>().material = underfriedSalmonMaterial;
                 StartCoroutine(ChangeMat(child));
             }
 
@@ -181,8 +179,6 @@ public class Salmonfilletfried : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float lerpFactor = elapsedTime / duration;
-            //childRenderer.material.Lerp(originalMaterial, friedSalmonMaterial, lerpFactor);
-
             yield return new WaitForSeconds(1);
         }
         childRenderer.material = friedSalmonMaterial;

@@ -23,7 +23,7 @@ public class PickNDrop : MonoBehaviour
     public GameObject pickbtn, dropbtn, Cuttingbtn, opendoor, closedoor, PLacebtn, dustbibtn, laptopbtn,
                       StoveBtnleft, StoveBtnleft1, StoveBtnRight, StoveBtnRight2, TimeSetBtn, porespicebtn, Spicebtn, BackFromSpice, InteractButton, backInteractButton, Leftrotation,
                       RightRotation, UpRotation, Downrotation, PLaceBtnn, Water, oilup, oilDown, InteractSauce, PLaceOrder, KniefHolderBtn,
-                      potatoCutBtn,ContinueBUtton, interactchikenBtn, BackinteractchikenBtn, CutBtn, placeSpatulla, ChickenBroutebtn, SoupPore, Phone, SavendLoadbtn;
+                      potatoCutBtn,ContinueBUtton, interactchikenBtn, BackinteractchikenBtn, CutBtn, placeSpatulla, ChickenBroutebtn, SoupPore, Phone, SavendLoadbtn,SunFlowerOilBtn,BackSunflowerBtnClk;
     public Transform OnionPos, MilkCreamPOs, DishPos, kniefpos, DishCamera, stolePos, BoxPos, MasalBoxapos, Cuttingknief, frypanpos, timeknob, BigPot,
                      cuttertry, PlaceCuttertTry, cutterBoard, LaptopPOs, fryerBasket, PellaPan, fishPos, TimeSetPos, cutterBoardPos
                       , verticallayout, SquareplateBasic, MediumPlateBasic, SmallPlateBasic, LargePlateBasic, DeepPlateBasic, Meat, fryerleft, fryerright,
@@ -1007,6 +1007,7 @@ public class PickNDrop : MonoBehaviour
                     Cuttingbtn.SetActive(false);
                     PLacebtn.SetActive(false);
                     laptopbtn.SetActive(false);
+                    SunFlowerOilBtn.SetActive(false);
                     SoupPore.SetActive(false);
                     StoveBtnleft.SetActive(false);
                     Spicebtn.SetActive(false);
@@ -1047,6 +1048,7 @@ public class PickNDrop : MonoBehaviour
                     InteractButton.SetActive(false);
                     PLaceBtnn.SetActive(true);
                     potatoCutBtn.SetActive(false);
+                    SunFlowerOilBtn.SetActive(false);
                     KniefHolderBtn.SetActive(false);
                     PLacebtn.SetActive(false);
                 }
@@ -1116,6 +1118,10 @@ public class PickNDrop : MonoBehaviour
                 else if (pickedObj.tag == "ChickenBroute" && _hitInfo.transform.tag == "BigPot")
                 {
                     interactchikenBtn.SetActive(true);
+                    PLaceBtnn.SetActive(false);
+                }  else if (pickedObj.name == "Sunflower Oil" && _hitInfo.transform.tag == "FryPan")
+                {
+                    SunFlowerOilBtn.SetActive(true);
                     PLaceBtnn.SetActive(false);
                 }
                 else if ((pickedObj.tag == "BakingTray" || pickedObj.tag == "cuttertry" || pickedObj.tag == "BigPot" || pickedObj.tag == "CuttingBoard"
@@ -1433,6 +1439,7 @@ public class PickNDrop : MonoBehaviour
                     InteractButton.SetActive(false);
                     justName.SetActive(false);
                     ItemNameImage.SetActive(false);
+                    SunFlowerOilBtn.SetActive(false);
                     pickbtn.SetActive(false);
                     placeSpatulla.SetActive(false);
                     opendoor.SetActive(false);
@@ -1465,6 +1472,7 @@ public class PickNDrop : MonoBehaviour
                 oilup.SetActive(false);
                 oilDown.SetActive(false);
                 PLaceBtnn.SetActive(false);
+                SunFlowerOilBtn.SetActive(false);
                 ItemNameImage.SetActive(false);
                 interactchikenBtn.SetActive(false);
                 justName.SetActive(false);
@@ -1501,6 +1509,7 @@ public class PickNDrop : MonoBehaviour
             oilDown.SetActive(false);
             PLaceBtnn.SetActive(false);
             ItemNameImage.SetActive(false);
+            SunFlowerOilBtn.SetActive(false);
             justName.SetActive(false);
             KniefHolderBtn.SetActive(false);
             pickbtn.SetActive(false);
@@ -3284,6 +3293,33 @@ public class PickNDrop : MonoBehaviour
         pickedObj.GetChild(3).transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = pickedObj.gameObject.GetComponent<SpiceQuantity>().Quantity.ToString() + "g";
         PlayerPrefs.SetInt("Interact", 2);
        
+    } 
+    public void SunflowerbtnClick()
+    {
+        Audio.clip = Auidos[3];
+        Audio.Play();
+        DuringCutting = false;
+        open = true;
+        dropbtn.SetActive(false);
+        EnvCamera.transform.position = fpsContollar.transform.position + new Vector3(0, 0.2f, 0);
+        EnvCamera.transform.rotation = fpsContollar.transform.rotation;
+        TempPOsRot.rotation = pickedObj.localRotation;
+        TempPOsRot.position = pickedObj.localPosition;
+        pickedObj.parent = null;
+        pickedObj.gameObject.GetComponent<SunflowerOil>().enabled = true;
+        PickupPosition = _hitInfo.transform.position + new Vector3(0, 0.45f, 0f);
+        pickedRotation = Quaternion.Euler(90,0,-90);
+        yposition = PickupPosition;
+        EnvCamera.SetActive(true);
+        FPSCotroller.SetActive(false);
+        StartCoroutine(doubleok());
+        interactableObject = _hitInfo.transform;
+        SunFlowerOilBtn.SetActive(false);
+        BackSunflowerBtnClk.SetActive(true);
+        pickedObj.GetComponent<MeshCollider>().enabled = false;
+        pickedObj.gameObject.GetComponent<LineRenderer>().enabled = false;
+        pickedObj.transform.GetChild(0).gameObject.SetActive(false);
+       
     }
 
     public void BackChickenBroutebtnClick()
@@ -3312,6 +3348,25 @@ public class PickNDrop : MonoBehaviour
         StartCoroutine(MoveCap(dropDistance));
         StartCoroutine(RotateCap(0));
         PlayerPrefs.SetInt("Interact", 0);
+    }
+    public void BackSunflowerOilbtnClick()
+    {
+   
+        DuringCutting = true;
+        Chickenbroute = false;
+        pickedObj.GetComponent<MeshCollider>().enabled = true;
+        pickedObj.gameObject.GetComponent<SunflowerOil>().enabled = false;
+        FPSCotroller.SetActive(true);
+        EnvCamera.SetActive(false);
+        pickedObj.transform.GetChild(0).gameObject.SetActive(true);
+        pickedObj.transform.parent = fpsContollar.transform;
+        PickupPosition = TempPOsRot.localPosition;
+        pickedRotation = TempPOsRot.localRotation;
+        StartCoroutine(doubleok());
+        maintainDistanceFlag = false;
+        SunFlowerOilBtn.SetActive(false);
+        BackSunflowerBtnClk.SetActive(false);
+
     }
 
     private IEnumerator RotateCap(float targetRotation)
