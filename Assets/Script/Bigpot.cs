@@ -6,7 +6,6 @@ namespace LiquidVolumeFX
     public class Bigpot : MonoBehaviour
     {
         RaycastHit HitInfo;
-        public LayerMask IgnoreMe;
         private GameObject bowl;
         int tomato=0;    
         private Vector3 initialPosition;
@@ -111,3 +110,4 @@ namespace LiquidVolumeFX
 
     }
 }
+

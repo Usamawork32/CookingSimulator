@@ -1047,6 +1047,7 @@ public class PickNDrop : MonoBehaviour
                     }
                     InteractButton.SetActive(false);
                     PLaceBtnn.SetActive(true);
+                    dustbibtn.SetActive(false);
                     potatoCutBtn.SetActive(false);
                     SunFlowerOilBtn.SetActive(false);
                     KniefHolderBtn.SetActive(false);
@@ -1119,7 +1120,11 @@ public class PickNDrop : MonoBehaviour
                 {
                     interactchikenBtn.SetActive(true);
                     PLaceBtnn.SetActive(false);
-                }  else if (pickedObj.name == "Sunflower Oil" && _hitInfo.transform.tag == "FryPan")
+                }  else if (pickedObj.tag == "BigPot" && _hitInfo.transform.name == "WaterTub")
+                {
+                    PLacebtn.SetActive(true);
+                } 
+                else if (pickedObj.name == "Sunflower Oil" && _hitInfo.transform.tag == "FryPan")
                 {
                     SunFlowerOilBtn.SetActive(true);
                     PLaceBtnn.SetActive(false);
@@ -2291,7 +2296,7 @@ public class PickNDrop : MonoBehaviour
 
     public void PLaceBtn()
     {
-        print("nnnnnnnnnnnnn");
+
         PlacePosition = _hitInfo.transform.position;
         if (_hitInfo.transform.name == "Pro Cutter")
         {
@@ -2316,6 +2321,10 @@ public class PickNDrop : MonoBehaviour
         else if (_hitInfo.transform.name == "Deep Fryer 01")
         {
             PlacePosition = fryerleft.position;
+            StartCoroutine(PlaceObject1());
+        } if (_hitInfo.transform.name == "WaterTub")
+        {
+            PlacePosition = _hitInfo.transform.GetChild(0).transform.position+ new Vector3(0,0.08f,-0.07f);
             StartCoroutine(PlaceObject1());
         }
         else if (_hitInfo.transform.tag == "Burner")
