@@ -9,7 +9,7 @@ public class PickNDrop : MonoBehaviour
     public AudioSource BackgroundAudio;
     public AudioSource Audio;
     public List<AudioClip> Auidos;
-    public GameObject NameRender, justNamerenderer, SoundPanel, SoundOn, SoundOff, JoyStick;
+    public GameObject NameRender, justNamerenderer, SoundPanel, SoundOn, SoundOff, JoyStick, CF2Panel;
     public List<Sprite> Sprites;
     public Animator Fridgedrawer1, Fridgedrawer2, PLaceOrderAnim;
     public GameObject cam, fpsContollar, cuttingFPS, MovingFPS, TemppickobjHolder, EnvCamera, Cf2, FPSCotroller;
@@ -2699,9 +2699,10 @@ public class PickNDrop : MonoBehaviour
         float currentRotationX = dustbin.rotation.eulerAngles.x;
         Quaternion targetRotation = Quaternion.Euler(0, 0, 0);
         StartCoroutine(RotateToTarget(dustbin, targetRotation));
+        DustObj = pickedObj.gameObject;
+        Destroy(DustObj);
         pickedObj = null;
         picUpOjectsList.Clear();
-        Destroy(DustObj);
     }
     public bool OnMaterial = false;
     public bool OffMaterial = false;

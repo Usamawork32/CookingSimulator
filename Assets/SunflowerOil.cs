@@ -6,7 +6,7 @@ public class SunflowerOil : MonoBehaviour
 {
     public GameObject TilTBtn;
     public GameObject FryPan;
-    float OIlQuantity=0;public bool Oiltily=true;
+    float OIlQuantity=0;public bool Oiltily=false;
 
     private void OnEnable()
     {
@@ -16,9 +16,12 @@ public class SunflowerOil : MonoBehaviour
     public void tiltBtnDown()
     {
         transform.GetChild(1).gameObject.SetActive(true);
-    }public void tiltBtnUp()
+        Oiltily = true;
+    }
+    public void tiltBtnUp()
     {
         transform.GetChild(1).gameObject.SetActive(false);
+        Oiltily = false;
 
     }
     private void Update()
@@ -29,10 +32,19 @@ public class SunflowerOil : MonoBehaviour
         }
         if(OIlQuantity>10)
         {
-            if(!FryPan.transform.GetChild(0).gameObject.activeSelf)
+            RaycastHit hitinfo;
+            if(Physics.Raycast(transform.position,transform.forward, out hitinfo,3))
             {
-                FryPan.transform.GetChild(0).gameObject.SetActive(true);
+                Debug.DrawRay(transform.position, transform.forward* 1, Color.white);
+                if (hitinfo.transform.tag == "FryPan"|| hitinfo.transform.name== "FryPan")
+                {
+                    if (!hitinfo.transform.GetChild(0).gameObject.activeSelf)
+                    {
+                        hitinfo.transform.GetChild(0).gameObject.SetActive(true);
+                    }
+                }
             }
+            
         }
     }
     private void OnDisable()

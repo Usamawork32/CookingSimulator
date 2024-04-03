@@ -87,18 +87,11 @@ namespace LiquidVolumeFX
                         transform.GetChild(1).GetComponent<LiquidVolume>().level = Bowllevel;
 
                         bowl.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().liquidColor1 = transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().liquidColor1;
-                        float  level = bowl.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level;
+                        float level = bowl.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level;
                         level += 0.5f * Time.deltaTime;
                         level = Mathf.Clamp(level, 0f, 0.7f);
                         bowl.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level = level;
 
-
-                        // Optional: Print the current Bowllevel value
-                        /*print("Bowllevel: " + Bowllevel);
-                        float blendShapeWeight = bowl.transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().GetBlendShapeWeight(0);
-                        blendShapeWeight -= blendShapeSpeed * Time.deltaTime;
-                        blendShapeWeight = Mathf.Clamp(blendShapeWeight, 10f, 100f);
-                        bowl.transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, blendShapeWeight);*/
                     }
                     else
                     {

@@ -1,0 +1,12 @@
+Converting script [1 / 1]	[\Script\Spatulla.cs]
+	Fragments : 3
+		[ 0] : Line:   51	InputProperty touchCount          
+		[ 1] : Line:   53	Other mod.	[Touch]
+		[ 2] : Line:   53	InputMethod   GetTouch            	(0)
+
+
+1 scripts modified!
+Overwriting actual scripts...
+	[0 / 1] from  [C:/Users/usama/OneDrive/Documents/GitHub/CookingSimulator/CF2-Data/Script-Backups/2024-04-03-13-24\Assets-After/\Script\Spatulla.cs] to [C:/Users/usama/OneDrive/Documents/GitHub/CookingSimulator/Assets/\Script\Spatulla.cs]
+
+Overwriting COMPLETED!

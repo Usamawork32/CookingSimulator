@@ -21,7 +21,7 @@ public class Salmonfilletfried : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (transform.childCount > 0 && transform.GetChild(0).tag== "SalmonFillet")
+        if (transform.childCount > 1 && transform.GetChild(1).tag== "SalmonFillet" && transform.GetChild(0).gameObject.activeSelf)
         {
            
             bool parentHasSalmonFillet = GetComponentsInChildren<Transform>().Any(child => child.CompareTag("SalmonFillet"));

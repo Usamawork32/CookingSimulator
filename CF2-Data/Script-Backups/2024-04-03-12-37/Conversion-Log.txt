@@ -1,0 +1,26 @@
+Converting script [1 / 3]	[\ChickenBrouth.cs]
+	Fragments : 3
+		[ 0] : Line:   62	InputProperty touchCount          
+		[ 1] : Line:   64	Other mod.	[Touch]
+		[ 2] : Line:   64	InputMethod   GetTouch            	(0)
+
+Converting script [2 / 3]	[\Script\Spatulla.cs]
+	Fragments : 3
+		[ 0] : Line:   51	InputProperty touchCount          
+		[ 1] : Line:   53	Other mod.	[Touch]
+		[ 2] : Line:   53	InputMethod   GetTouch            	(0)
+
+Converting script [3 / 3]	[\Scripts\SampleMouseSlicer.cs]
+	Fragments : 3
+		[ 0] : Line:  135	InputProperty touchCount          
+		[ 1] : Line:  137	Other mod.	[Touch]
+		[ 2] : Line:  137	InputMethod   GetTouch            	(0)
+
+
+3 scripts modified!
+Overwriting actual scripts...
+	[0 / 3] from  [C:/Users/usama/OneDrive/Documents/GitHub/CookingSimulator/CF2-Data/Script-Backups/2024-04-03-12-37\Assets-After/\ChickenBrouth.cs] to [C:/Users/usama/OneDrive/Documents/GitHub/CookingSimulator/Assets/\ChickenBrouth.cs]
+	[1 / 3] from  [C:/Users/usama/OneDrive/Documents/GitHub/CookingSimulator/CF2-Data/Script-Backups/2024-04-03-12-37\Assets-After/\Script\Spatulla.cs] to [C:/Users/usama/OneDrive/Documents/GitHub/CookingSimulator/Assets/\Script\Spatulla.cs]
+	[2 / 3] from  [C:/Users/usama/OneDrive/Documents/GitHub/CookingSimulator/CF2-Data/Script-Backups/2024-04-03-12-37\Assets-After/\Scripts\SampleMouseSlicer.cs] to [C:/Users/usama/OneDrive/Documents/GitHub/CookingSimulator/Assets/\Scripts\SampleMouseSlicer.cs]
+
+Overwriting COMPLETED!

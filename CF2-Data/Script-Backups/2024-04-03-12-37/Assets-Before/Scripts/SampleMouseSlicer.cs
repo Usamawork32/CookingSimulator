@@ -132,9 +132,9 @@ namespace BzKovSoft.ObjectSlicer.Samples
             }
             if (input)
             {
-                if (ControlFreak2.CF2Input.touchCount > 0)
+                if (Input.touchCount > 0)
                 {
-                    ControlFreak2.InputRig.Touch touch = ControlFreak2.CF2Input.GetTouch(0);
+                    Touch touch = Input.GetTouch(0);
 
                     if (touch.phase == TouchPhase.Moved)
                     {

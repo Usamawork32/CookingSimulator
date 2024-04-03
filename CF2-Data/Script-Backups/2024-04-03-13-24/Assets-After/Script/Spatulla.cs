@@ -15,12 +15,12 @@ public class Spatulla : MonoBehaviour
     public Transform SalmonFilletPos;
     void Update()
     {
-        if (Physics.Raycast(transform.position + new Vector3(-0.1f, 0, 0), -transform.up, out HitInfo, 1f))
+        if (Physics.Raycast(transform.position + new Vector3(-0.1f, 0, 0), -transform.up, out HitInfo, 0.5f))
         {
-            Debug.DrawRay(transform.position + new Vector3(-0.1f, 0, 0), -transform.up * 1, Color.red);
+            Debug.DrawRay(transform.position + new Vector3(-0.1f, 0, 0), -transform.up * HitInfo.distance, Color.red);
             linerendere.SetPosition(0, HitInfo.point);
             linerendere.SetPosition(1, HitInfo.point + new Vector3(0, 0.05f, 0f));
-            if (HitInfo.transform.tag== "SalmonFillet")
+            if (HitInfo.transform.tag=="FryPan")
             {
                 Spatuallinteract.SetActive(true);
             }
@@ -33,11 +33,11 @@ public class Spatulla : MonoBehaviour
     
     public void SpatullabtnClick()
     {
-        /*  bool hasChildWithTag = HitInfo.transform.Cast<Transform>().Any(child => child.CompareTag("SalmonFillet"));
-          if (hasChildWithTag)
-          {*/
-        pickedObj = HitInfo.transform;/*Cast<Transform>()
-    .FirstOrDefault(child => child.CompareTag("SalmonFillet")); ;*/
+        bool hasChildWithTag = HitInfo.transform.Cast<Transform>().Any(child => child.CompareTag("SalmonFillet"));
+        if (hasChildWithTag)
+        {
+            pickedObj = HitInfo.transform.Cast<Transform>()
+    .FirstOrDefault(child => child.CompareTag("SalmonFillet")); ;
             pickedObj.SetParent(transform);
             if (pickedObj.GetComponent<Rigidbody>() != null)
             {
@@ -47,8 +47,8 @@ public class Spatulla : MonoBehaviour
             PickupPosition = SalmonFilletPos.localPosition;
             pickedRotation = SalmonFilletPos.localRotation;
             StartCoroutine(doubleok());
-       // }
-       /* if (ControlFreak2.CF2Input.touchCount > 0)
+        }
+        if (ControlFreak2.CF2Input.touchCount > 0)
         {
             ControlFreak2.InputRig.Touch touch = ControlFreak2.CF2Input.GetTouch(0);
             print("Spatulla");
@@ -64,7 +64,7 @@ public class Spatulla : MonoBehaviour
 
                 transform.position = newPosition;
             }
-        }*/
+        }
     }
     IEnumerator doubleok()
     {
