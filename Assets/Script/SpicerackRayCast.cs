@@ -100,7 +100,7 @@ public class SpicerackRayCast : MonoBehaviour
             }
             transforms.position = startPosition;
             transform.parent.transform.GetChild(1).gameObject.SetActive(false);
-            transform.parent.transform.GetChild(2).transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = SpiceInt.ToString() + "g";
+            SaltAmount.Instance.SaltAmountWin.transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = SpiceInt.ToString() + "g";
 
         }
     }

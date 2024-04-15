@@ -2078,6 +2078,9 @@ public class PickNDrop : MonoBehaviour
         {
             Audio.clip = Auidos[22];
             Audio.Play();
+        }else if(pickedObj.name== "Big Pot")
+        {
+            pickedObj.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0,100);
         }
         pickedObj = null;
         picUpOjectsList.Clear();
@@ -3044,8 +3047,10 @@ public class PickNDrop : MonoBehaviour
 
         }
         SpicerackRayCast.SpiceInt = a;
-        pickedObj.GetChild(2).transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = a.ToString() + "g";
+        //pickedObj.GetChild(2).transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = a.ToString() + "g";
         pickedObj.GetChild(2).gameObject.SetActive(true);
+        SaltAmount.Instance.SaltAmountWin.transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = a.ToString() + "g";
+        
         EnvCamera.SetActive(true);
         FPSCotroller.SetActive(false);
         StartCoroutine(doubleok());
