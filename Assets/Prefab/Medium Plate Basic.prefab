@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 8864072076590784029}
   - component: {fileID: 6464429649254064090}
   - component: {fileID: 3597301337687502505}
+  - component: {fileID: 6809224286489927605}
   - component: {fileID: 6869256391968021447}
-  - component: {fileID: -7561416221334935760}
   - component: {fileID: 3454542087771561899}
   - component: {fileID: 7934274875978677664}
   - component: {fileID: 7300163480436751078}
+  - component: {fileID: 7083886737870581173}
   m_Layer: 0
   m_Name: Medium Plate Basic
   m_TagString: Medium Plate Basic
@@ -86,6 +87,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6809224286489927605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6869256391968021448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16648293, y: 0.0016967654, z: 0.1596986}
+  m_Center: {x: -0.0018072128, y: -0.020986348, z: -0.0006324649}
 --- !u!64 &6869256391968021447
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -100,18 +114,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8037744306852869728, guid: e0c224288d5914eeea445dc8cf149037, type: 3}
---- !u!114 &-7561416221334935760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6869256391968021448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74150fe5351cda749956865d8e2d14a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3454542087771561899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d7861b857b1464e8fc3801c9f00d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 0
   linerendere: {fileID: 7300163480436751078}
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!120 &7300163480436751078
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -241,3 +247,16 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &7083886737870581173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6869256391968021448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74150fe5351cda749956865d8e2d14a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Childmaking: 0

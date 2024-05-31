@@ -12,8 +12,26 @@ public class Interact : MonoBehaviour
     private void Start()
     {
         Invoke("position", 1f);
-
-
+    }
+    private void OnEnable()
+    {
+        Invoke("position", 1f);
+        if (transform.gameObject.GetComponent<NewBehaviourScript>())
+        {
+            transform.gameObject.GetComponent<NewBehaviourScript>().Childmaking = false;
+        }
+        VegetableCollision.vegetableColision = false;
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "potato" || child.tag == "tomato" || child.tag == "lemon" || child.tag == "onion" ||
+                child.tag == "potato1" || child.tag == "fish" || child.tag == "SalmonFillet")
+            {
+                if (!child.gameObject.GetComponent<Rigidbody>())
+                {
+                    child.gameObject.AddComponent<Rigidbody>();
+                }
+            }
+        }
     }
     public void position()
     {
@@ -27,24 +45,33 @@ public class Interact : MonoBehaviour
         if (Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0f), transform.forward, out HitInfo, 0.8f))
         {
             Debug.DrawRay(transform.position + new Vector3(0, 0.1f , 0), transform.forward * HitInfo.distance, Color.black);
-            linerendere.SetPosition(0, HitInfo.point);
-            linerendere.SetPosition(1, HitInfo.point + new Vector3(0, 0.1f, 0f));
+            if (linerendere != null)
+            {
+                linerendere.SetPosition(0, HitInfo.point);
+                linerendere.SetPosition(1, HitInfo.point + new Vector3(0, 0.1f, 0f));
+            }
 
         }
         else if (Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0f), -transform.forward, out HitInfo, 0.8f))
         {
             Debug.DrawRay(transform.position + new Vector3(0, 0.1f, 0f), -transform.forward * HitInfo.distance, Color.blue);
-            linerendere.SetPosition(0, HitInfo.point);
-            linerendere.SetPosition(1, HitInfo.point + new Vector3(0, 0.1f, 0));
+            if (linerendere != null)
+            {
+                linerendere.SetPosition(0, HitInfo.point);
+                linerendere.SetPosition(1, HitInfo.point + new Vector3(0, 0.1f, 0));
+            }
         }
         else 
         {
-            linerendere.SetPosition(0,  new Vector3(0, 0, 0));
-            linerendere.SetPosition(1, new Vector3(0, 0, 0));
+            if (linerendere != null)
+            {
+                linerendere.SetPosition(0, new Vector3(0, 0, 0));
+                linerendere.SetPosition(1, new Vector3(0, 0, 0));
+            }
         }
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0); // Get the first touch
+         Touch touch = Input.GetTouch(0); // Get the first touch
 
             // Check if the touch has moved
             if (touch.phase == TouchPhase.Moved)
@@ -64,6 +91,13 @@ public class Interact : MonoBehaviour
                 transform.position = newPosition;
             }
         }
-
+    }
+    private void OnDisable()
+    {
+        if (transform.gameObject.GetComponent<NewBehaviourScript>())
+        {
+            transform.gameObject.GetComponent<NewBehaviourScript>().Childmaking = true;
+        }
+        VegetableCollision.vegetableColision = true;
     }
 }

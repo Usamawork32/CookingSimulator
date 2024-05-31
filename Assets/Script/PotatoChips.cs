@@ -24,8 +24,6 @@ public class PotatoChips : MonoBehaviour
                 CutPotato0 = colidedGameobject;
                 collidedGameobject.Add(colidedGameobject);
             }
-            print("Colide object" + colidedGameobject.name);
-            print("CutPotto object" + CutPotato0.name);
         }
     }
     public void CutPotato()
@@ -35,8 +33,6 @@ public class PotatoChips : MonoBehaviour
         // Iterate through the collidedGameobject list
         foreach (GameObject obj in collidedGameobject)
         {
-
-            obj.SetActive(false);
             if (PickNDrop.instance.InstantiateObject.Contains(obj))
             {
                 PickNDrop.instance.InstantiateObject.Remove(obj);
@@ -47,6 +43,7 @@ public class PotatoChips : MonoBehaviour
                 PickNDrop.instance.InstantiateObject.Add( child.gameObject);
             }
             objectsToRemove.Add(obj);
+            Destroy(obj);
         }
 
         // Remove the objects after the iteration is complete

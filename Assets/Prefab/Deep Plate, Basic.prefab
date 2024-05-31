@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2354891387391655646}
   - component: {fileID: -3713213325303301461}
   - component: {fileID: 4872683109146997688}
+  - component: {fileID: 7421983798785276916}
   m_Layer: 0
   m_Name: Deep Plate, Basic
   m_TagString: Untagged
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74150fe5351cda749956865d8e2d14a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Childmaking: 0
 --- !u!114 &-3713213325303301461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d7861b857b1464e8fc3801c9f00d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 0
   linerendere: {fileID: 4872683109146997688}
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!120 &4872683109146997688
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -222,3 +228,16 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!65 &7421983798785276916
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341576503983470460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16500664, y: 0.0059999973, z: 0.14746833}
+  m_Center: {x: -0.000664711, y: -0.060000002, z: 0.0042078495}

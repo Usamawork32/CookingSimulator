@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 6389996163311397451}
   - component: {fileID: 7593485285883373192}
   - component: {fileID: 7733278383936171207}
+  - component: {fileID: 5963679940015861355}
   m_Layer: 0
   m_Name: SmallBowl
   m_TagString: Small Bowl , Basic
@@ -497,6 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74150fe5351cda749956865d8e2d14a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Childmaking: 0
 --- !u!120 &7593485285883373192
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -612,3 +614,16 @@ MonoBehaviour:
     m_Bits: 1
   linerendere: {fileID: 7593485285883373192}
   initialPosition: {x: 0, y: 0, z: 0}
+--- !u!65 &5963679940015861355
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389996163311397448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.13829899, y: 0.027649648, z: 0.11323619}
+  m_Center: {x: 0.00060129166, y: 0.014161941, z: -0.0064139366}

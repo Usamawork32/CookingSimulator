@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 namespace LiquidVolumeFX
@@ -22,21 +23,28 @@ namespace LiquidVolumeFX
         public float blendShapeSpeed = 5f;
         [Range(0f, 1f)]
         public float level = -0.5f;
+        int  ChickenBroutequantitlty = 0;
         private bool childRotating = false;
+        public static ChickenBrouth Instance;
+        private void Awake()
+        {
+            Instance = this;
+        }
         private void Start()
         {
             transform.gameObject.GetComponent<LineRenderer>().enabled = true;
             liquid = GetComponent<LiquidVolume>();
             level = 0f;
+           // transform.GetChild(3).transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = (Bigpot.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level * 357.14) + "g";
         }
         private void Update()
         {
             if (PickNDrop.Chickenbroute)
             {
-                if (Physics.Raycast(BrouteEffectPOs.transform.position , BrouteEffectPOs.transform.forward, out HitInfo, 0.8f, IgnoreMe))
+                if (Physics.Raycast(BrouteEffectPOs.transform.position, BrouteEffectPOs.transform.forward, out HitInfo, 0.8f, IgnoreMe))
                 {
                     Debug.DrawRay(BrouteEffectPOs.transform.position, BrouteEffectPOs.transform.forward * HitInfo.distance, Color.white);
-                    if(HitInfo.transform.tag=="BigPot")
+                    if (HitInfo.transform.tag == "BigPot")
                     {
                         Broutebtn.SetActive(true);
                     }
@@ -55,48 +63,33 @@ namespace LiquidVolumeFX
                         linerendere.SetPosition(0, new Vector3(0f, 0f, 0f));
                         linerendere.SetPosition(1, new Vector3(0f, 0f, 0f));
                     }
-                    
+
                 }
+            }
+            if (child && Bigpot.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level< 0.7)
+            {
+                level = Bigpot.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level;
+                level += 0.09f * Time.deltaTime;
+                level = Mathf.Clamp(level, 0f, 0.7f);
+                // int BrouthQuantity = Mathf.RoundToInt(ChickenBroutequantitlty - (float)(level/4) * 1028.5f);
+                ChickenBroutequantitlty = Mathf.RoundToInt(level* 357.4f);
+                SaltAmount.Instance.SaltAmountWin.transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = ChickenBroutequantitlty.ToString() + "g";
 
-
-                if (ControlFreak2.CF2Input.touchCount > 0)
+                // transform.GetChild(3).transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = ChickenBroutequantitlty.ToString() + "g";
+                Bigpot.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level = level;
+                if (childRotating)
                 {
-                    ControlFreak2.InputRig.Touch touch = ControlFreak2.CF2Input.GetTouch(0);
-
-                    if (touch.phase == TouchPhase.Moved)
-                    {
-                        Vector2 touchDeltaPosition = touch.deltaPosition;
-                        touchDeltaPosition = -touchDeltaPosition;
-
-                        Vector3 newPosition = new Vector3(
-                            Mathf.Clamp(transform.position.x + touchDeltaPosition.x * 0.001f, initialPosition.x - 0.25f, initialPosition.x + 0.25f),
-                            initialPosition.y,
-                            Mathf.Clamp(transform.position.z + touchDeltaPosition.y * 0.001f, initialPosition.z - 0.25f, initialPosition.z + 0.25f));
-
-                        transform.position = newPosition;
-                    }
+                    RotateObject();
                 }
-                
-                if (child)
-                {
-                    level = Bigpot.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level;
-                    level += 0.05f * Time.deltaTime;
-                    level = Mathf.Clamp(level, 0f, 0.7f);
-                    int BrouthQuantity = Mathf.RoundToInt(720f - (float)level * 1028.5f);
-                    transform.GetChild(3).transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = BrouthQuantity.ToString() + "g";
-                    transform.gameObject.GetComponent<SpiceQuantity>().Quantity = BrouthQuantity;
-                    Bigpot.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level = level;
-                    if (childRotating)
-                    {
-                        RotateObject();
-                    }
-                }
-            
+            }
+            else
+            {
+                BrouteEffect.gameObject.SetActive(false);
             }
         }
         public void ONBroutebtnDown()
         {
-            if (transform.gameObject.GetComponent<SpiceQuantity>().Quantity > 5)
+            if (Bigpot.transform.GetChild(1).transform.gameObject.GetComponent<LiquidVolume>().level < 0.7)
             {
                 BrouteEffect.gameObject.SetActive(true);
             }
@@ -107,11 +100,25 @@ namespace LiquidVolumeFX
         }
         public void ONBroutebtnUp()
         {
+           /* if (PlayerPrefs.GetInt("ChickenBroute", 1) == 1)
+            {
+                transform.gameObject.GetComponent<SpiceQuantity>().Quantity = 1000 - ChickenBroutequantitlty;
+            }
+            else if (PlayerPrefs.GetInt("ChickenBroute", 1) ==2)
+            {
+                transform.gameObject.GetComponent<SpiceQuantity>().Quantity = 750 - ChickenBroutequantitlty;
+            } else if (PlayerPrefs.GetInt("ChickenBroute", 1) ==3)
+            {
+                transform.gameObject.GetComponent<SpiceQuantity>().Quantity = 500 - ChickenBroutequantitlty;
+            } else if (PlayerPrefs.GetInt("ChickenBroute", 1) ==4)
+            {
+                transform.gameObject.GetComponent<SpiceQuantity>().Quantity = 250 - ChickenBroutequantitlty;
+            }*/
+
             child = false;
             transform.rotation = rotation;
             BrouteEffect.gameObject.SetActive(false);
             childRotating = false;
-
         }
         public void YpositionsBtn()
         {

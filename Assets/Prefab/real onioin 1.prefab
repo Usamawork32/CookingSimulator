@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: -8162164185540231490}
   - component: {fileID: 6755172265783877245}
   - component: {fileID: -396038073833872439}
+  - component: {fileID: -411013603263912148}
+  - component: {fileID: -1028996844430939818}
   - component: {fileID: -9146097598826362191}
   m_Layer: 0
   m_Name: real onioin 1
@@ -159,6 +161,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-411013603263912148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8730985516588114942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be552a46fd1aa44fab209e86354caa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1028996844430939818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8730985516588114942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc28907e07b2f1f44ac5f5054696d9e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-9146097598826362191
 MonoBehaviour:
   m_ObjectHideFlags: 0

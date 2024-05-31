@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2226743547329087096}
   - component: {fileID: -2060026538236238326}
   - component: {fileID: 303698292535537265}
+  - component: {fileID: 2979319908937815518}
   m_Layer: 0
   m_Name: Casserole , Basic
   m_TagString: Casserole , Basic
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74150fe5351cda749956865d8e2d14a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Childmaking: 0
 --- !u!114 &-2060026538236238326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d7861b857b1464e8fc3801c9f00d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 0
   linerendere: {fileID: 303698292535537265}
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!120 &303698292535537265
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -222,3 +228,16 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!65 &2979319908937815518
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6843051099256997903}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12621689, y: 0.01, z: 0.11877167}
+  m_Center: {x: 0.00025367737, y: -0.06289315, z: -0.0028842092}

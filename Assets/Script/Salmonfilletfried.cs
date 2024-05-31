@@ -55,7 +55,6 @@ public class Salmonfilletfried : MonoBehaviour
                 {
                     if (!isFrying && PickNDrop.burner2)
                     {
-                        print("fry the  Salmon");
                         isFrying = true;
                         StartCoroutine(Fryfish());
                     }
@@ -186,5 +185,9 @@ public class Salmonfilletfried : MonoBehaviour
         isFrying = false;
         isTrigger = true;
         elapsedtime1 = 0;
+        if(transform.GetChild(0).transform.name=="Cube")
+        {
+            transform.GetChild(0).transform.gameObject.SetActive(false);
+        }
     }
 }

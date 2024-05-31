@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: -2726960029580918128}
   - component: {fileID: -2187558734200753140}
   - component: {fileID: 345463705871732219}
+  - component: {fileID: 8748587425032490708}
+  - component: {fileID: 1593125842285107394}
   - component: {fileID: 245009288429205807}
   m_Layer: 0
   m_Name: real potato 1
@@ -159,6 +161,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8748587425032490708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701252067753446635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be552a46fd1aa44fab209e86354caa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1593125842285107394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701252067753446635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc28907e07b2f1f44ac5f5054696d9e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &245009288429205807
 MonoBehaviour:
   m_ObjectHideFlags: 0

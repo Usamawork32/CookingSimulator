@@ -6,13 +6,16 @@ public class SunflowerOil : MonoBehaviour
 {
     public GameObject TilTBtn;
     public GameObject FryPan;
-    float OIlQuantity=0;public bool Oiltily=false;
+    float OIlQuantity=0;
+    public bool Oiltily=false;
 
     private void OnEnable()
     {
         TilTBtn.SetActive(true);
+        Oiltily = false;
         OIlQuantity = 0;
     }
+
     public void tiltBtnDown()
     {
         transform.GetChild(1).gameObject.SetActive(true);
@@ -30,7 +33,7 @@ public class SunflowerOil : MonoBehaviour
         {
             OIlQuantity = OIlQuantity + Time.deltaTime;
         }
-        if(OIlQuantity>10)
+        if(OIlQuantity>6)
         {
             RaycastHit hitinfo;
             if(Physics.Raycast(transform.position,transform.forward, out hitinfo,3))

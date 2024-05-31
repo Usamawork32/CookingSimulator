@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/envoirnment.unity
+    path: Assets/Scenes/CookingSimulator.unity
     guid: 98abbbc98307c4280b58132a5c52ca0f
   m_configObjects: {}

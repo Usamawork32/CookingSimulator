@@ -1,0 +1,12 @@
+Converting script [1 / 1]	[\Script\Interact.cs]
+	Fragments : 3
+		[ 0] : Line:   45	InputProperty touchCount          
+		[ 1] : Line:   47	Other mod.	[Touch]
+		[ 2] : Line:   47	InputMethod   GetTouch            	(0)
+
+
+1 scripts modified!
+Overwriting actual scripts...
+	[0 / 1] from  [C:/Users/usama/OneDrive/Documents/GitHub/CookingSimulator/CF2-Data/Script-Backups/2024-04-18-16-14\Assets-After/\Script\Interact.cs] to [C:/Users/usama/OneDrive/Documents/GitHub/CookingSimulator/Assets/\Script\Interact.cs]
+
+Overwriting COMPLETED!

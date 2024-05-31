@@ -6,7 +6,7 @@ using System.Linq;
 public class Spatulla : MonoBehaviour
 {
     RaycastHit HitInfo;
-    public GameObject Spatuallinteract;
+    public GameObject Spatuallinteract, SpatullaTurnbtn;
     private Transform pickedObj;
     public LineRenderer linerendere;
     public Vector3 initialPosition;
@@ -19,7 +19,7 @@ public class Spatulla : MonoBehaviour
         {
             Debug.DrawRay(transform.position + new Vector3(-0.1f, 0, 0), -transform.up * 1, Color.red);
             linerendere.SetPosition(0, HitInfo.point);
-            linerendere.SetPosition(1, HitInfo.point + new Vector3(0, 0.05f, 0f));
+            linerendere.SetPosition(1, HitInfo.point + new Vector3(0, 0.1f, 0));
             if (HitInfo.transform.tag== "SalmonFillet")
             {
                 Spatuallinteract.SetActive(true);
@@ -29,42 +29,27 @@ public class Spatulla : MonoBehaviour
                 Spatuallinteract.SetActive(false);
             }
         }
+        else
+        {
+            linerendere.SetPosition(0, new Vector3(0, 0, 0));
+            linerendere.SetPosition(1, new Vector3(0, 0, 0));
+        }
     }
-    
+
     public void SpatullabtnClick()
     {
-        /*  bool hasChildWithTag = HitInfo.transform.Cast<Transform>().Any(child => child.CompareTag("SalmonFillet"));
-          if (hasChildWithTag)
-          {*/
-        pickedObj = HitInfo.transform;/*Cast<Transform>()
-    .FirstOrDefault(child => child.CompareTag("SalmonFillet")); ;*/
-            pickedObj.SetParent(transform);
-            if (pickedObj.GetComponent<Rigidbody>() != null)
-            {
-                Rigidbody rb = pickedObj.GetComponent<Rigidbody>();
-                Destroy(rb);
-            }
-            PickupPosition = SalmonFilletPos.localPosition;
-            pickedRotation = SalmonFilletPos.localRotation;
-            StartCoroutine(doubleok());
-       // }
-       /* if (ControlFreak2.CF2Input.touchCount > 0)
+
+        pickedObj = HitInfo.transform;
+        pickedObj.SetParent(transform);
+        if (pickedObj.GetComponent<Rigidbody>() != null)
         {
-            ControlFreak2.InputRig.Touch touch = ControlFreak2.CF2Input.GetTouch(0);
-            print("Spatulla");
-            if (touch.phase == TouchPhase.Moved)
-            {
-                Vector2 touchDeltaPosition = touch.deltaPosition;
-                touchDeltaPosition = -touchDeltaPosition;
-
-                Vector3 newPosition = new Vector3(
-                    Mathf.Clamp(transform.position.x + touchDeltaPosition.x * 0.001f, initialPosition.x - 0.25f, initialPosition.x + 0.25f),
-                    initialPosition.y,
-                    Mathf.Clamp(transform.position.z + touchDeltaPosition.y * 0.001f, initialPosition.z - 0.25f, initialPosition.z + 0.25f));
-
-                transform.position = newPosition;
-            }
-        }*/
+            Rigidbody rb = pickedObj.GetComponent<Rigidbody>();
+            Destroy(rb);
+        }
+        PickupPosition = SalmonFilletPos.localPosition;
+        pickedRotation = SalmonFilletPos.localRotation;
+        StartCoroutine(doubleok());
+       
     }
     IEnumerator doubleok()
     {
@@ -75,7 +60,6 @@ public class Spatulla : MonoBehaviour
         while (distance >= 0.01f)
         {
             pickedObj.transform.localPosition = Vector3.Lerp(b, targetpos, 0.1f);
-            //print("a");
             distance -= 0.5f;
             yield return null;
         }
@@ -97,16 +81,28 @@ public class Spatulla : MonoBehaviour
         }
         pickedObj.transform.localRotation = targetRotation;
         pickedObj.transform.localPosition = targetpos;
-        SpatullaTurn();
+        SpatullaTurnbtn.SetActive(true);
     }
 
     public void SpatullaTurn()
     {
-        if (pickedObj.GetComponent<Rigidbody>() == null)
+        if (! pickedObj.GetComponent<Rigidbody>())
         {
             pickedObj.gameObject.AddComponent<Rigidbody>();
             Rigidbody rb = pickedObj.GetComponent<Rigidbody>();
             rb.isKinematic = false;
         } 
+    }
+    public void SpatullaTurnBtnClick()
+    {
+        transform.rotation = Quaternion.Euler(180, 0, 0);
+        SpatullaTurnbtn.SetActive(false);
+        Invoke("ResetRotation", 1f);
+        SpatullaTurn();
+
+    }
+    public void ResetRotation()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }

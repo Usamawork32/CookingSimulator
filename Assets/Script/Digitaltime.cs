@@ -8,7 +8,7 @@ public class Digitaltime : MonoBehaviour
     public int seconds = 0;
 
     public Text timerText;
-
+    public static bool DigitalTime = true;
     private float currentTime;
 
     void Start()
@@ -16,11 +16,16 @@ public class Digitaltime : MonoBehaviour
         // Convert initial minutes and seconds to total seconds
         currentTime = minutes * 60 + seconds;
     }
+    private void OnEnable()
+    {
+        currentTime = minutes * 60 + seconds;
+        DigitalTime = true;
 
+    }
     void Update()
     {
         // Update the timer
-        if (currentTime > 0)
+        if (currentTime > 0 && DigitalTime)
         {
             currentTime -= Time.deltaTime;
 

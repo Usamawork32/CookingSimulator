@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: -6361258119904025755}
   - component: {fileID: -6862823359388792043}
   - component: {fileID: 6456586808434076412}
-  - component: {fileID: 6317859678136152707}
   - component: {fileID: 5904080018861096589}
+  - component: {fileID: -7301634399202541029}
+  - component: {fileID: -5173448275102559703}
   m_Layer: 0
   m_Name: real lemon 1
   m_TagString: lemon
@@ -162,20 +163,6 @@ MonoBehaviour:
   _sliceId: 0
   _lastSliceTime: -3.4028235e+38
   delayBetweenSlices: 1
---- !u!64 &6317859678136152707
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621542506269227446}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2640535231976113872, guid: e0c224288d5914eeea445dc8cf149037, type: 3}
 --- !u!54 &5904080018861096589
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -192,3 +179,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-7301634399202541029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621542506269227446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be552a46fd1aa44fab209e86354caa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5173448275102559703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621542506269227446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc28907e07b2f1f44ac5f5054696d9e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

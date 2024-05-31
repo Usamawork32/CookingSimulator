@@ -116,20 +116,8 @@ public class SaveLoadManager : MonoBehaviour
                 if (prefab != null)
                 {
                     // Instantiate a new GameObject based on the prefab, position, and rotation from the loaded data
-                    if (prefab.tag != "potato1")
-                    {
-                        GameObject instantiatedObject = Instantiate(prefab, data.position, data.rotation);
-                        PickNDrop.instance.InstantiateObject.Add(instantiatedObject);
-                        foreach (Material ObjectMaterial in ObjectMaterials)
-                        {
-                            print(data.MaterialName + "    " + ObjectMaterial.name);
-                            if (data.MaterialName == ObjectMaterial.name + " (Instance)" || data.MaterialName == ObjectMaterial.name)
-                            {
-                                instantiatedObject.GetComponent<Renderer>().material = ObjectMaterial;
-                            }
-                        }
-                    }
-                    else if (prefab.tag == "potato1")
+
+                     if (prefab.tag == "potato1")
                     {
                         int a = Random.Range(0, 7);
                         prefab = ChipsList[a];
@@ -145,7 +133,19 @@ public class SaveLoadManager : MonoBehaviour
                         }
 
                     }
-                    // Additional logic can be added here to handle the instantiated object as needed
+                    else
+                    {
+                        GameObject instantiatedObject = Instantiate(prefab, data.position, data.rotation);
+                        PickNDrop.instance.InstantiateObject.Add(instantiatedObject);
+                        foreach (Material ObjectMaterial in ObjectMaterials)
+                        {
+                            print(data.MaterialName + "    " + ObjectMaterial.name);
+                            if (data.MaterialName == ObjectMaterial.name + " (Instance)" || data.MaterialName == ObjectMaterial.name)
+                            {
+                                instantiatedObject.GetComponent<Renderer>().material = ObjectMaterial;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -177,21 +177,35 @@ public class SaveLoadManager : MonoBehaviour
                 }
             }
         }
-
-        string pickedObjName = PlayerPrefs.GetString("pickedObjName");
-        print(pickedObjName);
-        string pickedObjTag = PlayerPrefs.GetString("pickedObjTag");
-        GameObject currentObj = GameObject.Find(pickedObjName);
-        if (currentObj != null)
+        if (PlayerPrefs.GetInt("PickedObj") == 2)
         {
-            print(currentObj.name);
-            PickNDrop.instance.pickedObj = currentObj.transform;
-            PickNDrop.instance.pickedObj.name = pickedObjName;
-            PickNDrop.instance.tag = pickedObjTag;
-            PickNDrop.Hitobject = false;
-            PickNDrop.instance.pickUpBtnClicked();
-            Invoke("Bool", 0.5f);
+            string pickedObjName = PlayerPrefs.GetString("pickedObjName");
+            print(pickedObjName);
+            string pickedObjTag = PlayerPrefs.GetString("pickedObjTag");
+            GameObject currentObj = GameObject.FindWithTag(pickedObjTag);
+            if (currentObj != null)
+            {
+                print(currentObj.name);
+                PickNDrop.instance.pickedObj = currentObj.transform;
+                /*            PickNDrop.instance.pickedObj.name = pickedObjName;
+                            PickNDrop.instance.tag = pickedObjTag;*/
+                PickNDrop.Hitobject = false;
+                PickNDrop.instance.pickUpBtnClicked();
+                Invoke("Bool", 0.5f);
 
+            }
+            else
+            {
+                GameObject currentObj1 = GameObject.Find(pickedObjName);
+                if (currentObj1 != null)
+                {
+                    print(currentObj.name);
+                    PickNDrop.instance.pickedObj = currentObj.transform;
+                    PickNDrop.Hitobject = false;
+                    PickNDrop.instance.pickUpBtnClicked();
+                    Invoke("Bool", 0.5f);
+                }
+            }
         }
     }
 
@@ -199,13 +213,8 @@ public class SaveLoadManager : MonoBehaviour
     public void SaveBtnClick()
     {
         SaveGameObjectsData(PickNDrop.instance.InstantiateObject, HeirarchyGameobject);
-        PlayerPrefs.SetInt("Continue", 1);
+        PlayerPrefs.SetInt("Continue", 2);
         //  Application.Quit();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_ANDROID || UNITY_IOS
-    Application.Quit();
-#endif
     }
     public void LoadBtnClick()
     {

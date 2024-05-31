@@ -26,9 +26,11 @@ public class SpicerackRayCast : MonoBehaviour
     {
         parentObject = transform.parent;
         initialPosition = PickNDrop.yposition;
+        poreSpiceCorooutine = true;
     }
     private void OnEnable()
     {
+        // parentObject = transform.parent;
         initialPosition = PickNDrop.yposition;
     }
     void Update()
@@ -40,9 +42,9 @@ public class SpicerackRayCast : MonoBehaviour
             linerendere.SetPosition(0, HitInfo.point);
             linerendere.SetPosition(1, HitInfo.point + new Vector3(0, 0.05f, 0));
         }
-        if (ControlFreak2.CF2Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {  
-            Vector2 touchDeltaPosition = ControlFreak2.CF2Input.GetTouch(0).deltaPosition;
+            Vector2 touchDeltaPosition =Input.GetTouch(0).deltaPosition;
             touchDeltaPosition = -touchDeltaPosition;
 
             Vector3 newPosition = new Vector3(
@@ -55,11 +57,16 @@ public class SpicerackRayCast : MonoBehaviour
         }
 
     }
+    public bool poreSpiceCorooutine=true;
    public void PoreSpice(int b)
     {
-        StartCoroutine(PoreSpiceCoroutine(b));
-        Audio.clip = Auidos[0];
-        Audio.Play();
+        if (poreSpiceCorooutine)
+        {
+            StartCoroutine(PoreSpiceCoroutine(b));
+            Audio.clip = Auidos[0];
+            Audio.Play();
+            poreSpiceCorooutine = false;
+        }
     }
 
     private IEnumerator PoreSpiceCoroutine(int a)
@@ -67,7 +74,7 @@ public class SpicerackRayCast : MonoBehaviour
         if (transform.parent.transform.gameObject.GetComponent<SpiceQuantity>().Quantity > 0)
         {
             Vector3 startPosition = transforms.position;
-            Vector3 targetPosition = startPosition + new Vector3(0, -0.03f, 0);
+            Vector3 targetPosition = startPosition + new Vector3(0, -0.05f, 0);
             transforms.position = Vector3.Lerp(startPosition, targetPosition, 2 * Time.deltaTime);
             transform.parent.transform.gameObject.GetComponent<SpiceQuantity>().Quantity = transform.parent.transform.gameObject.GetComponent<SpiceQuantity>().Quantity - 1;
             transform.parent.transform.GetChild(1).gameObject.SetActive(true);
@@ -101,7 +108,7 @@ public class SpicerackRayCast : MonoBehaviour
             transforms.position = startPosition;
             transform.parent.transform.GetChild(1).gameObject.SetActive(false);
             SaltAmount.Instance.SaltAmountWin.transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Text>().text = SpiceInt.ToString() + "g";
-
+            poreSpiceCorooutine = true;
         }
     }
 
